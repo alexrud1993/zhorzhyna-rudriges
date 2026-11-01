@@ -36,7 +36,7 @@ function Shell() {
 
   const navLink = ({ path: p, label, title, Icon }: (typeof NAV)[number]) => (
     <a key={p} href={`#${p}`} aria-current={active(p) ? 'page' : undefined} aria-label={title}
-      className={`flex min-h-16 min-w-0 flex-col items-center justify-center gap-0.5 text-[11px] font-semibold ${active(p) ? 'text-leaf-700' : 'text-leaf-800/60'}`}>
+      className={`flex min-h-16 min-w-0 flex-col items-center justify-center gap-0.5 text-[11px] font-semibold max-[359px]:text-[10px] max-[359px]:tracking-tight ${active(p) ? 'text-leaf-700' : 'text-leaf-800/60'}`}>
       <Icon size={24} strokeWidth={active(p) ? 2.6 : 2} /><span className="max-w-full truncate">{label}</span>
     </a>
   )
