@@ -26,7 +26,8 @@ const json = (body, status, cors) => new Response(JSON.stringify(body), {
 export default {
   async fetch(req, env) {
     const origin = req.headers.get('origin') || ''
-    const allowed = (env.ALLOWED_ORIGINS || '').split(',').map((s) => s.trim()).filter(Boolean)
+    // ALLOWED_ORIGINS_EXTRA — приватні адреси (напр. LAN-сервер), задаються секретом, щоб не потрапляли в репозиторій
+    const allowed = `${env.ALLOWED_ORIGINS || ''},${env.ALLOWED_ORIGINS_EXTRA || ''}`.split(',').map((s) => s.trim()).filter(Boolean)
     const ok = allowed.includes(origin)
     const cors = ok ? { 'access-control-allow-origin': origin, vary: 'origin' } : {}
     const url = new URL(req.url)

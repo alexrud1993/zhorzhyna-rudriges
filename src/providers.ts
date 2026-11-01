@@ -40,8 +40,12 @@ export function matchCatalog(scientificName: string, genus?: string): Pick<Sugge
 export class IdentifyError extends Error {}
 
 /** Адреса захищеного проксі (публічна URL, НЕ ключ). Ключ сервісу зберігається лише на проксі. */
-export const identifyUrl = (): string =>
-  (globalThis as { __IDENTIFY_URL__?: string }).__IDENTIFY_URL__ || import.meta.env.VITE_IDENTIFY_URL || ''
+export const identifyUrl = (): string => {
+  // Тестовий перемикач: __IDENTIFY_URL__ = 'off' вимикає розпізнавання, інший рядок — підміняє адресу
+  const o = (globalThis as { __IDENTIFY_URL__?: string }).__IDENTIFY_URL__
+  if (o === 'off') return ''
+  return o || import.meta.env.VITE_IDENTIFY_URL || ''
+}
 
 export const remoteProvider: PlantIdentificationProvider = {
   mode: 'remote',

@@ -14,7 +14,7 @@ const wx = { current: { temperature_2m: 12, relative_humidity_2m: 70, precipitat
 
 async function ctxPage({ proxy, width = 390, height = 844, ...opts } = {}) {
   const ctx = await browser.newContext({ viewport: { width, height }, isMobile: width < 768, hasTouch: width < 768, ...opts })
-  if (proxy) await ctx.addInitScript((u) => { globalThis.__IDENTIFY_URL__ = u }, PROXY)
+  await ctx.addInitScript((u) => { globalThis.__IDENTIFY_URL__ = u }, proxy ? PROXY : 'off')
   const page = await ctx.newPage()
   page.setDefaultTimeout(10000)
   const errs = []

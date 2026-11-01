@@ -74,6 +74,10 @@ await t('binding RATE_LIMITER має пріоритет', async () => {
   const r = await worker.fetch(req(form(), { ip: '10.0.0.1' }), { ...env, RATE_LIMITER: { limit: async () => ({ success: false }) } })
   assert.equal(r.status, 429)
 })
+await t('додаткові origin з ALLOWED_ORIGINS_EXTRA', async () => {
+  const r = await worker.fetch(req(null, { method: 'OPTIONS', origin: 'http://10.1.2.3:8080' }), { ...env, ALLOWED_ORIGINS_EXTRA: 'http://10.1.2.3:8080' })
+  assert.equal(r.status, 204); assert.equal(r.headers.get('access-control-allow-origin'), 'http://10.1.2.3:8080')
+})
 await t('інші шляхи -> 404', async () => {
   assert.equal((await worker.fetch(req(form(), { path: '/' }), env)).status, 404)
 })
