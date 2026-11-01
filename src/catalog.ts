@@ -27,5 +27,30 @@ export const CATALOG: PlantCatalogEntry[] = [
   e('apple', 'Яблуня', 'tree', '🍎', 10, 'Дорослі дерева менш вимогливі до поливу.', 'Повне сонце.', 'Суглинок з дренажем.', 'Молоді дерева перевіряйте частіше, дорослі — у посуху.'),
   e('thuja', 'Туя', 'tree', '🌲', 7, 'Вічнозелена, любить вологе повітря.', 'Сонце або півтінь.', 'Помірно вологий дренований ґрунт.', 'Особливо уважно в перший рік після посадки.'),
   e('currant', 'Смородина чорна', 'tree', '🫐', 5, 'Любить вологий ґрунт.', 'Сонце або півтінь.', 'Родючий суглинок.', 'Не дає ґрунту пересихати під час росту ягід.'),
+  // Загальні записи для рослин, яких немає в демо-каталозі (напр. після розпізнавання за фото).
+  { ...e('other-indoor', 'Інша кімнатна рослина', 'indoor', '🪴', 7, 'Рослини немає в демо-каталозі — підказки найзагальніші.', 'Уточніть потреби саме цього виду.', 'Уточніть потреби саме цього виду.', 'Перевіряйте вологість ґрунту пальцем.'), generic: true },
+  { ...e('other-garden', 'Інша садова рослина', 'garden', '🌼', 5, 'Рослини немає в демо-каталозі — підказки найзагальніші.', 'Уточніть потреби саме цього виду.', 'Уточніть потреби саме цього виду.', 'Перевіряйте вологість ґрунту пальцем.'), generic: true },
+  { ...e('other-vegetable', 'Інша городня культура', 'vegetable', '🥬', 3, 'Культури немає в демо-каталозі — підказки найзагальніші.', 'Уточніть потреби саме цієї культури.', 'Уточніть потреби саме цієї культури.', 'Перевіряйте вологість ґрунту пальцем.'), generic: true },
+  { ...e('other-tree', 'Інше дерево чи кущ', 'tree', '🌳', 10, 'Рослини немає в демо-каталозі — підказки найзагальніші.', 'Уточніть потреби саме цього виду.', 'Уточніть потреби саме цього виду.', 'Перевіряйте вологість ґрунту біля кореня.'), generic: true },
 ]
 export const catalogById = (id: string) => CATALOG.find((c) => c.id === id)
+
+/** Наукові назви для зіставлення результатів розпізнавання: вид — точний збіг, рід — «схожа». */
+export const SCIENTIFIC: Record<string, { species: string[]; genus?: string[] }> = {
+  monstera: { species: ['monstera deliciosa'], genus: ['monstera'] },
+  ficus: { species: ['ficus benjamina'] },
+  sansevieria: { species: ['dracaena trifasciata', 'sansevieria trifasciata'], genus: ['sansevieria'] },
+  zamioculcas: { species: ['zamioculcas zamiifolia'], genus: ['zamioculcas'] },
+  orchid: { species: ['phalaenopsis amabilis', 'phalaenopsis aphrodite'], genus: ['phalaenopsis'] },
+  spathiphyllum: { species: ['spathiphyllum wallisii', 'spathiphyllum floribundum'], genus: ['spathiphyllum'] },
+  rose: { species: ['rosa gallica', 'rosa chinensis', 'rosa odorata', 'rosa damascena'], genus: ['rosa'] },
+  hydrangea: { species: ['hydrangea macrophylla', 'hydrangea paniculata', 'hydrangea arborescens'], genus: ['hydrangea'] },
+  lavender: { species: ['lavandula angustifolia', 'lavandula stoechas'], genus: ['lavandula'] },
+  tomato: { species: ['solanum lycopersicum'] },
+  cucumber: { species: ['cucumis sativus'] },
+  pepper: { species: ['capsicum annuum'], genus: ['capsicum'] },
+  strawberry: { species: ['fragaria ananassa', 'fragaria vesca'], genus: ['fragaria'] },
+  apple: { species: ['malus domestica', 'malus pumila'], genus: ['malus'] },
+  thuja: { species: ['thuja occidentalis', 'thuja plicata', 'platycladus orientalis'], genus: ['thuja'] },
+  currant: { species: ['ribes nigrum'], genus: ['ribes'] },
+}

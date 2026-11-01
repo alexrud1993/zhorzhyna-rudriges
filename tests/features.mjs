@@ -95,9 +95,9 @@ try {
     await page.goto(URL + '#/plants/new')
     await page.locator('#photo-cam').waitFor({ state: 'attached' })
     ok((await page.locator('#photo-cam').getAttribute('capture')) === 'environment' && (await page.locator('#photo-file').getAttribute('capture')) === null, 'є кнопка камери (capture) і окрема кнопка галереї/файлу')
-    await page.locator('#photo-file').setInputFiles('public/zhorzhyna-rudriges-logo.png')
+    await page.locator('#photo-file').setInputFiles('public/icon-512.png')
     await page.getByAltText('Попередній перегляд').waitFor()
-    await page.locator('#photo-cam').setInputFiles('public/zhorzhyna-rudriges-logo.png')
+    await page.locator('#photo-cam').setInputFiles('public/icon-512.png')
     ok(await page.getByAltText('Попередній перегляд').isVisible(), 'фото з файлу та з камери показують перегляд')
     await ctx.close()
   }

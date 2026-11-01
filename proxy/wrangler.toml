@@ -1,0 +1,20 @@
+name = "zhorzhyna-identify"
+main = "worker.mjs"
+compatibility_date = "2026-06-01"
+
+[vars]
+# Сайти, яким дозволено звертатися до проксі (через кому)
+ALLOWED_ORIGINS = "https://alexrud1993.github.io,http://localhost:5173,http://localhost:4173"
+# Мова народних назв від Pl@ntNet (якщо 'uk' не підтримується сервісом — лишити 'en')
+PLANTNET_LANG = "en"
+
+# Ліміт частоти на IP: 10 запитів за 60 с (Workers Rate Limiting)
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+  [ratelimits.simple]
+  limit = 10
+  period = 60
+
+# Секрет додається командою (НЕ в цей файл):
+#   npx wrangler secret put PLANTNET_API_KEY

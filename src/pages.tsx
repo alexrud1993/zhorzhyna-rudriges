@@ -1,10 +1,12 @@
-import { createContext, useContext, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react'
-import { AlertTriangle, CheckCircle2, CloudRain, Download, Droplets, Droplet, Plus, Search, Sparkles, Thermometer, Trash2, Upload, Undo2, Pencil, Sprout, RefreshCw, WifiOff } from 'lucide-react'
+import { createContext, useContext, useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react'
+import { AlertTriangle, Camera, CheckCircle2, CloudRain, Download, Droplets, Droplet, ImageIcon, Loader2, Plus, Search, Sparkles, Thermometer, Trash2, Upload, Undo2, Pencil, Sprout, RefreshCw, WifiOff } from 'lucide-react'
 import { CATALOG, CATEGORY_LABEL, catalogById } from './catalog'
 import { CITIES, cityById } from './cities'
 import { adviseFor, dayDiff, startOfDay, type Advice } from './advice'
 import { buildBackup, defaultPlacement, parseBackup, shrinkImage, uid, useStore } from './store'
-import { Confirm, PlantImage, Toast, fmtDate, fmtDateTime, go, plantName, relDay, useObjectUrl } from './ui'
+import { Confirm, PlantImage, Toast, fmtDate, fmtDateTime, go, localISODate, plantName, relDay, useObjectUrl } from './ui'
+import { useCapture, peekIdentifyPhoto, clearIdentifyPhoto, setFormDraft, peekFormDraft, clearFormDraft } from './capture'
+import { IdentifyError, remoteProvider, type Organ, type Suggestion } from './providers'
 import type { CareEvent, Category, Placement, UserPlant } from './types'
 import type { WeatherData, WeatherStatus } from './weather'
 
@@ -38,6 +40,30 @@ function StatusChip({ a }: { a: Advice }) {
   return <span className={`inline-block rounded-full px-3 py-1 text-sm font-semibold ${cls}`}>{t}</span>
 }
 
+/* ======================= Розпізнавання: блок на головній ======================= */
+function IdentifyHero() {
+  const { openCamera, openGallery } = useCapture()
+  return (
+    <section className="card border-2 border-leaf-200 p-5" aria-labelledby="idh">
+      <div className="flex items-start gap-4">
+        <div className="grid size-14 shrink-0 place-items-center rounded-2xl bg-leaf-700 text-white" aria-hidden><Camera size={28} /></div>
+        <div>
+          <h2 id="idh" className="font-display text-xl font-bold leading-tight">Розпізнати рослину за фото</h2>
+          <p className="mt-1 text-sm text-leaf-800/80">
+            {remoteProvider.available
+              ? 'Сфотографуйте листок або квітку — запропонуємо варіанти та створимо картку рослини.'
+              : 'Сфотографуйте рослину — фото одразу потрапить у картку. Автоматичне розпізнавання ще не підключено, вид оберете зі списку.'}
+          </p>
+        </div>
+      </div>
+      <div className="mt-4 grid grid-cols-2 gap-3">
+        <button className="btn btn-primary" onClick={openCamera}><Camera size={20} /> Камера</button>
+        <button className="btn btn-soft" onClick={openGallery}><ImageIcon size={20} /> Галерея</button>
+      </div>
+    </section>
+  )
+}
+
 /* ======================= Головна ======================= */
 function WeatherCard() {
   const { status, data, reload } = useContext(WxCtx)
@@ -61,9 +87,9 @@ function WeatherCard() {
       {data && (
         <>
           <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-            <div className="rounded-2xl bg-white/10 p-3"><Thermometer className="mx-auto" size={20} /><div className="text-2xl font-bold">{Math.round(data.temp)}°C</div><div className="text-xs opacity-80">температура</div></div>
-            <div className="rounded-2xl bg-white/10 p-3"><CloudRain className="mx-auto" size={20} /><div className="text-2xl font-bold">{data.precipDaily[2] != null ? `${data.precipDaily[2].toFixed(1)} мм` : '—'}</div><div className="text-xs opacity-80">опади сьогодні</div></div>
-            <div className="rounded-2xl bg-white/10 p-3"><Droplets className="mx-auto" size={20} /><div className="text-2xl font-bold">{data.humidity != null ? `${Math.round(data.humidity)}%` : '—'}</div><div className="text-xs opacity-80">вологість повітря</div></div>
+            <div className="rounded-2xl bg-white/10 p-3"><Thermometer className="mx-auto" size={20} /><div className="whitespace-nowrap text-xl font-bold sm:text-2xl">{Math.round(data.temp)}°C</div><div className="text-xs leading-tight opacity-80">температура</div></div>
+            <div className="rounded-2xl bg-white/10 p-3"><CloudRain className="mx-auto" size={20} /><div className="whitespace-nowrap text-xl font-bold sm:text-2xl">{data.precipDaily[2] != null ? `${data.precipDaily[2].toFixed(1)} мм` : '—'}</div><div className="text-xs leading-tight opacity-80">опади сьогодні</div></div>
+            <div className="rounded-2xl bg-white/10 p-3"><Droplets className="mx-auto" size={20} /><div className="whitespace-nowrap text-xl font-bold sm:text-2xl">{data.humidity != null ? `${Math.round(data.humidity)}%` : '—'}</div><div className="text-xs leading-tight opacity-80">вологість повітря</div></div>
           </div>
           <p className="mt-3 text-sm opacity-90">
             {status === 'cached' ? '⚠ Показано збережені дані (немає мережі). ' : 'Open-Meteo. '}
@@ -92,6 +118,7 @@ export function Home() {
   return (
     <div className="space-y-6">
       <PageTitle sub="Ваші рослини та найближчий догляд">Вітаю в саду 🌿</PageTitle>
+      <IdentifyHero />
       <WeatherCard />
 
       <button onClick={() => go('/plants/new')} className="btn btn-primary w-full text-lg" style={{ minHeight: 56 }}><Plus /> Додати рослину</button>
@@ -186,12 +213,19 @@ export function PlantsPage({ query }: { query: URLSearchParams }) {
 export function PlantForm({ id }: { id?: string }) {
   const { plants, settings, setMode, addPlant, updatePlant } = useStore()
   const existing = id ? plants.find((p) => p.id === id) : undefined
-  const [catalogId, setCatalogId] = useState(existing?.catalogId ?? '')
+  const { openCamera } = useCapture()
+  // Чернетка з екрана розпізнавання (фото, запропонована рослина)
+  const [draft] = useState(() => (id ? null : peekFormDraft()))
+  useEffect(() => { clearFormDraft() }, [])
+  const draftEntry = draft?.catalogId ? catalogById(draft.catalogId) : undefined
+  const [catalogId, setCatalogId] = useState(existing?.catalogId ?? draft?.catalogId ?? '')
   const [category, setCategory] = useState<Category | 'all'>(existing?.category ?? 'all')
+  const [onlyGeneric, setOnlyGeneric] = useState(!!draft?.needsCategory)
   const [search, setSearch] = useState('')
-  const [customName, setCustomName] = useState(existing?.customName ?? '')
-  const [placement, setPlacement] = useState<Placement>(existing?.placement ?? 'indoor')
-  const [blob, setBlob] = useState<Blob | undefined>(existing?.imageBlob)
+  const [customName, setCustomName] = useState(existing?.customName ?? draft?.customName ?? '')
+  const [placement, setPlacement] = useState<Placement>(existing?.placement ?? (draftEntry ? defaultPlacement(draftEntry.category) : 'indoor'))
+  const [blob, setBlob] = useState<Blob | undefined>(existing?.imageBlob ?? draft?.photo)
+  const scientificName = existing?.scientificName ?? draft?.scientificName
   const [lastWatered, setLastWatered] = useState('')
   const [soilType, setSoilType] = useState(existing?.soilType ?? '')
   const [sun, setSun] = useState(existing?.sunExposure ?? '')
@@ -201,11 +235,11 @@ export function PlantForm({ id }: { id?: string }) {
   const fileRef = useRef<HTMLInputElement>(null)
   const camRef = useRef<HTMLInputElement>(null)
   const preview = useObjectUrl(blob)
-  const today = new Date().toISOString().slice(0, 10)
+  const today = localISODate(new Date())
 
   if (id && !existing) return <NotFound />
 
-  const filtered = CATALOG.filter((c) => (category === 'all' || c.category === category) && c.commonNameUk.toLowerCase().includes(search.trim().toLowerCase()))
+  const filtered = CATALOG.filter((c) => (!onlyGeneric || c.generic) && (category === 'all' || c.category === category) && c.commonNameUk.toLowerCase().includes(search.trim().toLowerCase()))
 
   function choose(cid: string) {
     setCatalogId(cid)
@@ -232,10 +266,12 @@ export function PlantForm({ id }: { id?: string }) {
     const c = catalogById(catalogId)!
     const p: UserPlant = {
       id: existing?.id ?? uid(), catalogId, customName: customName.trim() || undefined, category: c.category, placement,
-      cityId: existing?.cityId ?? settings.selectedCityId, imageBlob: blob, addedAt: existing?.addedAt ?? new Date().toISOString(),
+      cityId: existing?.cityId ?? settings.selectedCityId, imageBlob: blob, addedAt: existing?.addedAt ?? new Date().toISOString(), scientificName,
       soilType: (soilType || undefined) as UserPlant['soilType'], sunExposure: (sun || undefined) as UserPlant['sunExposure'], potOrGround: (pot || undefined) as UserPlant['potOrGround'],
     }
-    const saved = existing ? await updatePlant(p) : await addPlant(p, lastWatered ? new Date(`${lastWatered}T12:00:00`).toISOString() : undefined)
+    // Полив «сьогодні» записуємо поточним часом, інші дні — локальним полуднем (не в майбутньому)
+    const wateredAt = !lastWatered ? undefined : lastWatered === today ? new Date().toISOString() : new Date(`${lastWatered}T12:00:00`).toISOString()
+    const saved = existing ? await updatePlant(p) : await addPlant(p, wateredAt)
     if (saved) go(`/plants/${p.id}`)
   }
 
@@ -245,10 +281,14 @@ export function PlantForm({ id }: { id?: string }) {
 
       <fieldset className="card space-y-3 p-5">
         <legend className="px-1 font-display text-lg font-bold">1. Що це за рослина?</legend>
-        <div className="flex items-center gap-2 rounded-xl bg-leaf-50 p-3 text-sm">
-          <Sparkles size={18} className="shrink-0 text-leaf-600" />
-          <span><b className="rounded-full bg-leaf-200 px-2 py-0.5">AI-розпізнавання — незабаром</b> Поки що оберіть рослину вручну з каталогу.</span>
-        </div>
+        {draft?.scientificName ? (
+          <div role="status" className="flex items-start gap-2 rounded-xl bg-leaf-50 p-3 text-sm">
+            <Sparkles size={18} className="mt-0.5 shrink-0 text-leaf-600" />
+            <span>За фото запропоновано: <i>{draft.scientificName}</i>. {draft.needsCategory ? 'Цього виду немає в демо-каталозі — оберіть тип «Інша …», щоб отримати загальні підказки.' : 'Перевірте вибір нижче.'}</span>
+          </div>
+        ) : !existing && (
+          <button type="button" onClick={openCamera} className="btn btn-soft w-full"><Camera size={20} /> Розпізнати за фото</button>
+        )}
         <input aria-label="Пошук у каталозі" type="search" placeholder="Пошук у каталозі" className="field" value={search} onChange={(e) => setSearch(e.target.value)} />
         <div className="flex flex-wrap gap-2" role="group" aria-label="Фільтр категорії">
           {(['all', 'indoor', 'garden', 'vegetable', 'tree'] as const).map((c) => (
@@ -264,6 +304,7 @@ export function PlantForm({ id }: { id?: string }) {
           ))}
           {filtered.length === 0 && <p className="col-span-2 p-3 text-leaf-800/70">Нічого не знайдено.</p>}
         </div>
+        {onlyGeneric && <button type="button" className="text-sm font-semibold underline" onClick={() => setOnlyGeneric(false)}>Показати весь каталог</button>}
         {err.catalog && <p id="e-cat" role="alert" className="font-semibold text-[#a63a1d]">{err.catalog}</p>}
       </fieldset>
 
@@ -292,14 +333,14 @@ export function PlantForm({ id }: { id?: string }) {
           <div className="flex items-center gap-3">
             {preview ? <img src={preview} alt="Попередній перегляд" className="size-20 rounded-2xl object-cover" /> : <div className="grid size-20 place-items-center rounded-2xl bg-leaf-50 text-3xl" aria-hidden>📷</div>}
             <div className="flex flex-col gap-2">
-              <input ref={fileRef} type="file" accept="image/*" className="sr-only" id="photo-file" disabled={busy} onChange={(e) => onFile(e.target.files?.[0])} />
-              <input ref={camRef} type="file" accept="image/*" capture="environment" className="sr-only" id="photo-cam" disabled={busy} onChange={(e) => onFile(e.target.files?.[0])} />
-              <label htmlFor="photo-cam" className="btn btn-primary cursor-pointer">{busy ? 'Обробка…' : '📷 Сфотографувати'}</label>
-              <label htmlFor="photo-file" className="btn btn-soft cursor-pointer">{busy ? 'Обробка…' : blob ? 'Змінити з галереї / файлу' : '🖼 Завантажити з галереї / файлу'}</label>
+              <input ref={fileRef} type="file" accept="image/*" className="sr-only" id="photo-file" tabIndex={-1} aria-hidden disabled={busy} onChange={(e) => onFile(e.target.files?.[0])} />
+              <input ref={camRef} type="file" accept="image/*" capture="environment" className="sr-only" id="photo-cam" tabIndex={-1} aria-hidden disabled={busy} onChange={(e) => onFile(e.target.files?.[0])} />
+              <button type="button" disabled={busy} onClick={() => camRef.current?.click()} className="btn btn-primary">{busy ? 'Обробка…' : '📷 Сфотографувати'}</button>
+              <button type="button" disabled={busy} onClick={() => fileRef.current?.click()} className="btn btn-soft">{busy ? 'Обробка…' : blob ? 'Змінити з галереї / файлу' : '🖼 Завантажити з галереї / файлу'}</button>
               {blob && <button type="button" className="text-sm font-semibold underline" onClick={() => { setBlob(undefined); if (fileRef.current) fileRef.current.value = ''; if (camRef.current) camRef.current.value = '' }}>Прибрати фото</button>}
             </div>
           </div>
-          <p className="mt-1 text-sm text-leaf-800/70">Фото лишається на вашому пристрої й зменшується до 800 px. Воно не використовується для розпізнавання.</p>
+          <p className="mt-1 text-sm text-leaf-800/70">Фото зберігається лише на цьому пристрої й зменшується до 800 px.</p>
           {err.photo && <p role="alert" className="mt-1 text-[#a63a1d]">{err.photo}</p>}
         </div>
       </fieldset>
@@ -369,6 +410,7 @@ export function PlantDetail({ id }: { id: string }) {
         <PlantImage plant={plant} className="h-56 w-full text-8xl md:h-72" />
         <div className="space-y-2 p-5">
           <h1 className="font-display text-3xl font-bold">{plantName(plant)}</h1>
+          {plant.scientificName && <p className="italic text-leaf-800/80">{plant.scientificName}</p>}
           <p className="text-leaf-800/75">{c?.commonNameUk} · {CATEGORY_LABEL[plant.category]} · {PLACEMENT_LABEL[plant.placement]} · {cityById(plant.cityId).name}</p>
           <div className="flex gap-2 pt-2">
             <button className="btn btn-soft" onClick={() => go(`/plants/${id}/edit`)}><Pencil size={18} /> Редагувати</button>
@@ -441,8 +483,13 @@ export function PlantDetail({ id }: { id: string }) {
 
 /* ======================= Календар ======================= */
 export function CalendarPage() {
-  const { plants, events, addEvent } = useStore()
+  const { plants, events, addEvent, removeEvent } = useStore()
   const adv = useAdvice()
+  const [toast, setToast] = useState<{ msg: string; undo(): void } | null>(null)
+  async function done(p: UserPlant) {
+    const ev = await addEvent(p.id, 'soil_checked')
+    if (ev) setToast({ msg: `Ґрунт «${plantName(p)}» перевірено`, undo: () => { removeEvent(ev.id) } })
+  }
   const items = plants.map((p) => ({ p, a: adv.get(p.id)! })).filter((x) => x.a).sort((x, y) => x.a.next.getTime() - y.a.next.getTime())
   const now = new Date()
   const todayList = items.filter((x) => x.a.status !== 'upcoming')
@@ -450,18 +497,6 @@ export function CalendarPage() {
   const later = items.filter((x) => dayDiff(x.a.next, now) > 7)
   const doneToday = events.filter((e) => startOfDay(new Date(e.timestamp)).getTime() === startOfDay(now).getTime())
 
-  const Row = ({ p, a, actionable }: { p: UserPlant; a: Advice; actionable?: boolean }) => (
-    <li className="card flex items-center gap-3 p-3">
-      <button onClick={() => go(`/plants/${p.id}`)} className="flex min-w-0 flex-1 items-center gap-3 text-left">
-        <PlantImage plant={p} className="size-14 shrink-0 rounded-2xl text-2xl" />
-        <span className="min-w-0"><span className="block truncate font-bold">{plantName(p)}</span><span className="text-sm text-leaf-800/70">{fmtDate(a.next)}</span> <StatusChip a={a} /></span>
-      </button>
-      {actionable && <button className="btn btn-primary shrink-0" onClick={() => addEvent(p.id, 'soil_checked')} aria-label={`Позначити виконаним: ${plantName(p)}`}><CheckCircle2 size={20} /><span className="hidden sm:inline">Виконано</span></button>}
-    </li>
-  )
-  const Section = ({ title, list, actionable }: { title: string; list: typeof items; actionable?: boolean }) => list.length === 0 ? null : (
-    <section><h2 className="mb-3 font-display text-2xl font-bold">{title}</h2><ul className="space-y-3">{list.map((x) => <Row key={x.p.id} {...x} actionable={actionable} />)}</ul></section>
-  )
   const name = (id: string) => { const p = plants.find((x) => x.id === id); return p ? plantName(p) : '—' }
 
   return (
@@ -469,15 +504,36 @@ export function CalendarPage() {
       <PageTitle sub="Завдання — це перевірка вологості ґрунту, а не обов’язковий полив">Календар</PageTitle>
       {plants.length === 0 && <p className="card p-6 text-center text-leaf-800/75">Додайте рослини, щоб побачити завдання.</p>}
       {plants.length > 0 && todayList.length === 0 && <p className="card p-5">На сьогодні завдань немає 🎉</p>}
-      <Section title="Сьогодні та прострочені" list={todayList} actionable />
-      <Section title="Найближчі 7 днів" list={week} />
-      <Section title="Пізніше" list={later} />
+      <CalSection title="Сьогодні та прострочені" list={todayList} onDone={done} />
+      <CalSection title="Найближчі 7 днів" list={week} />
+      <CalSection title="Пізніше" list={later} />
       {doneToday.length > 0 && (
         <section><h2 className="mb-3 font-display text-2xl font-bold">Виконано сьогодні</h2>
           <ul className="space-y-2">{doneToday.map((e) => <li key={e.id} className="card flex items-center gap-2 p-3"><CheckCircle2 className="text-leaf-600" size={20} /> {name(e.plantId)} — {e.type === 'watered' ? 'полив' : 'ґрунт перевірено'}, {fmtDateTime(e.timestamp)}</li>)}</ul>
         </section>
       )}
+      {toast && <Toast msg={toast.msg} action={{ label: 'Скасувати', run: toast.undo }} onClose={() => setToast(null)} />}
     </div>
+  )
+}
+
+function CalSection({ title, list, onDone }: { title: string; list: { p: UserPlant; a: Advice }[]; onDone?: (p: UserPlant) => void }) {
+  if (list.length === 0) return null
+  return (
+    <section>
+      <h2 className="mb-3 font-display text-2xl font-bold">{title}</h2>
+      <ul className="space-y-3">
+        {list.map(({ p, a }) => (
+          <li key={p.id} className="card flex items-center gap-3 p-3">
+            <button onClick={() => go(`/plants/${p.id}`)} className="flex min-w-0 flex-1 items-center gap-3 text-left">
+              <PlantImage plant={p} className="size-14 shrink-0 rounded-2xl text-2xl" />
+              <span className="min-w-0"><span className="block truncate font-bold">{plantName(p)}</span><span className="text-sm text-leaf-800/70">{fmtDate(a.next)}</span> <StatusChip a={a} /></span>
+            </button>
+            {onDone && <button className="btn btn-primary shrink-0" onClick={() => onDone(p)} aria-label={`Позначити виконаним: ${plantName(p)}`}><CheckCircle2 size={20} /><span className="hidden sm:inline">Виконано</span></button>}
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }
 
@@ -549,7 +605,7 @@ export function SettingsPage() {
           <li>Для вуличних: спека скорочує інтервал, а нещодавні або очікувані опади (від 5 мм) подовжують його.</li>
           <li>У «Розумному» режимі додатково враховуються горщик, сонячність і тип ґрунту, якщо вказані, а також ваша ручна оцінка вологості при перевірці (вона перекриває розрахунок до наступного запису).</li>
           <li>Погода — Open-Meteo без ключа. Без мережі показуємо збережені дані або працюємо без погоди.</li>
-          <li>AI-розпізнавання фото поки не підключене: оберіть рослину вручну.</li>
+          <li>Розпізнавання за фото: {remoteProvider.available ? 'фото надсилається захищеному сервісу розпізнавання лише для визначення виду; результати — пропозиції, які ви підтверджуєте.' : 'ще не підключене (потрібен захищений сервер-посередник). Фото можна зробити й обрати рослину вручну.'}</li>
         </ul>
       </section>
 
@@ -558,6 +614,144 @@ export function SettingsPage() {
           onYes={async () => { const ok = await replaceAll(pending.plants, pending.events, pending.settings); if (ok) setMsg({ ok: true, text: `Імпортовано: ${pending.plants.length} рослин, ${pending.events.length} записів.` }); setPending(null) }}>
           У файлі: {pending.plants.length} рослин, {pending.events.length} записів журналу. Поточна колекція ({plants.length} рослин) буде повністю замінена.
         </Confirm>
+      )}
+    </div>
+  )
+}
+
+/* ======================= Розпізнавання за фото ======================= */
+const ORGANS: { id: Organ; label: string }[] = [
+  { id: 'auto', label: 'Авто' }, { id: 'leaf', label: 'Лист' }, { id: 'flower', label: 'Квітка' }, { id: 'fruit', label: 'Плід' }, { id: 'bark', label: 'Кора' },
+]
+type IdState = { kind: 'idle' } | { kind: 'loading' } | { kind: 'error'; msg: string } | { kind: 'done'; source: string; results: Suggestion[] }
+
+export function IdentifyPage() {
+  const { openCamera, openGallery } = useCapture()
+  const [file, setFile] = useState<File | null>(() => peekIdentifyPhoto())
+  const [organ, setOrgan] = useState<Organ>('auto')
+  const [state, setState] = useState<IdState>({ kind: 'idle' })
+  const [adding, setAdding] = useState(false)
+  const preview = useObjectUrl(file ?? undefined)
+  const available = remoteProvider.available
+
+  useEffect(() => {
+    clearIdentifyPhoto()
+    const f = () => { const p = peekIdentifyPhoto(); clearIdentifyPhoto(); if (p) { setFile(p); setState({ kind: 'idle' }) } }
+    addEventListener('identify-photo', f)
+    return () => removeEventListener('identify-photo', f)
+  }, [])
+
+  async function run(o: Organ = organ) {
+    if (!file) return
+    setState({ kind: 'loading' })
+    try {
+      const img = await shrinkImage(file, 1280)
+      const r = await remoteProvider.identify(img, o)
+      setState({ kind: 'done', ...r })
+    } catch (e) {
+      setState({ kind: 'error', msg: e instanceof IdentifyError || e instanceof Error ? e.message : 'Не вдалося розпізнати.' })
+    }
+  }
+  // Після результату — прокрутити до варіантів (на телефоні фото займає весь екран)
+  const resRef = useRef<HTMLHeadingElement>(null)
+  useEffect(() => { if (state.kind === 'done' || state.kind === 'error') resRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }, [state.kind])
+  // Нове фото → одразу розпізнаємо (якщо сервіс підключено)
+  useEffect(() => { if (file && available) run('auto') }, [file]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  async function add(s?: Suggestion) {
+    if (!file) return
+    setAdding(true)
+    try {
+      const photo = await shrinkImage(file, 800)
+      if (!s) setFormDraft({ photo })
+      else if (s.entry) setFormDraft({ photo, catalogId: s.entry.id, scientificName: s.scientificName, customName: s.match === 'genus' ? (s.commonNames[0] ?? s.scientificName).slice(0, 40) : undefined })
+      else setFormDraft({ photo, scientificName: s.scientificName, customName: (s.commonNames[0] ?? s.scientificName).slice(0, 40), needsCategory: true })
+      go('/plants/new')
+    } catch (e) {
+      setState({ kind: 'error', msg: (e as Error).message })
+    } finally { setAdding(false) }
+  }
+
+  return (
+    <div className="mx-auto max-w-2xl space-y-5">
+      <PageTitle sub="Сфотографуйте листок, квітку або всю рослину при денному світлі">Розпізнати рослину</PageTitle>
+
+      {!file ? (
+        <section className="card space-y-4 p-6 text-center">
+          <Camera className="mx-auto text-leaf-600" size={48} />
+          <p className="text-leaf-800/80">Зробіть фото камерою або оберіть наявне з галереї.</p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <button className="btn btn-primary" onClick={openCamera}><Camera size={20} /> Сфотографувати</button>
+            <button className="btn btn-soft" onClick={openGallery}><ImageIcon size={20} /> З галереї / файлу</button>
+          </div>
+        </section>
+      ) : (
+        <section className="card overflow-hidden">
+          {preview && <img src={preview} alt="Фото для розпізнавання" className="max-h-80 w-full object-cover" />}
+          <div className="grid grid-cols-2 gap-3 p-4">
+            <button className="btn btn-soft" onClick={openCamera}><Camera size={20} /> Інше фото</button>
+            <button className="btn btn-soft" onClick={openGallery}><ImageIcon size={20} /> З галереї</button>
+          </div>
+        </section>
+      )}
+
+      {file && !available && (
+        <section className="card space-y-3 p-5" role="status">
+          <h2 className="font-display text-xl font-bold">Автоматичне розпізнавання ще не підключено</h2>
+          <p className="text-leaf-800/80">Для нього потрібен захищений сервер-посередник із ключем сервісу розпізнавання — ключ не можна зберігати на сайті. Поки що оберіть рослину вручну: фото вже буде в картці.</p>
+          <button className="btn btn-primary w-full" disabled={adding} onClick={() => add()}>Обрати рослину вручну</button>
+        </section>
+      )}
+
+      {file && available && (
+        <section className="card space-y-4 p-5" aria-labelledby="res-h">
+          <h2 id="res-h" ref={resRef} className="scroll-mt-4 font-display text-xl font-bold">Варіанти</h2>
+          <div role="radiogroup" aria-label="Що на фото" className="flex flex-wrap gap-2">
+            {ORGANS.map((o) => (
+              <button key={o.id} role="radio" aria-checked={organ === o.id} disabled={state.kind === 'loading'}
+                onClick={() => { setOrgan(o.id); run(o.id) }}
+                className={`btn min-h-10 text-sm ${organ === o.id ? 'btn-primary' : 'btn-soft'}`}>{o.label}</button>
+            ))}
+          </div>
+          {state.kind === 'loading' && <p role="status" className="flex items-center gap-2 font-semibold"><Loader2 className="animate-spin" size={20} /> Розпізнаю…</p>}
+          {state.kind === 'error' && (
+            <div role="alert" className="space-y-2 rounded-xl bg-clay/15 p-3 text-[#8f3f18]">
+              <p className="flex items-start gap-2 font-semibold"><AlertTriangle size={20} className="shrink-0" /> {state.msg}</p>
+              <button className="btn btn-soft min-h-10 text-sm" onClick={() => run()}>Спробувати ще раз</button>
+            </div>
+          )}
+          {state.kind === 'done' && state.results.length === 0 && (
+            <p role="status" className="rounded-xl bg-leaf-50 p-3">Рослину не впізнано. Спробуйте чіткіше фото листка чи квітки крупним планом або оберіть вручну.</p>
+          )}
+          {state.kind === 'done' && state.results.length > 0 && (
+            <>
+              {state.results[0].score < 0.25 && <p role="status" className="rounded-xl bg-clay/15 p-3 text-sm font-semibold text-[#8f3f18]">Сервіс не впевнений у результаті — уважно перевірте варіанти або оберіть вручну.</p>}
+              <ul className="space-y-3" aria-label="Запропоновані рослини">
+                {state.results.map((s) => (
+                  <li key={s.scientificName} className="rounded-2xl border-2 border-leaf-100 p-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <p className="font-display text-lg font-bold">{s.entry && s.match === 'species' ? s.entry.commonNameUk : (s.commonNames[0] ?? s.scientificName)}</p>
+                        <p className="break-words text-sm italic text-leaf-800/80">{s.scientificName}</p>
+                      </div>
+                      <span className="shrink-0 rounded-full bg-leaf-100 px-3 py-1 text-sm font-bold" aria-label={`Оцінка сервісу ${Math.round(s.score * 100)} відсотків`}>{Math.round(s.score * 100)}%</span>
+                    </div>
+                    <div className="mt-2 h-2 overflow-hidden rounded-full bg-leaf-50" aria-hidden><div className="h-full bg-leaf-500" style={{ width: `${Math.round(s.score * 100)}%` }} /></div>
+                    <p className="mt-2 text-sm text-leaf-800/80">
+                      {s.match === 'species' ? '✓ Є в каталозі — підказки для цього виду.'
+                        : s.match === 'genus' ? `≈ Схожа рослина того ж роду — догляд як для «${s.entry!.commonNameUk}».`
+                          : 'Немає в демо-каталозі — буде загальна картка «Інша рослина».'}
+                    </p>
+                    <button className="btn btn-primary mt-3 w-full" disabled={adding} onClick={() => add(s)}><Plus size={20} /> Додати в колекцію</button>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-leaf-800/70">Розпізнавання: {state.source}. Відсоток — оцінка сервісу, а не гарантія; перевірте перед додаванням.</p>
+            </>
+          )}
+          <p className="text-xs text-leaf-800/70">Фото надсилається сервісу розпізнавання лише для визначення виду. У застосунку воно зберігається тільки на вашому пристрої.</p>
+          <button className="btn btn-soft w-full" disabled={adding} onClick={() => add()}>Немає правильного варіанту — обрати вручну</button>
+        </section>
       )}
     </div>
   )

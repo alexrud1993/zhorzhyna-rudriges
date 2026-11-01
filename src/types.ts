@@ -11,6 +11,8 @@ export interface PlantCatalogEntry {
   soilHint: string
   wateringHint: string
   emoji: string
+  /** Загальний запис «Інша рослина» для видів поза демо-каталогом */
+  generic?: boolean
   /** Загальний орієнтовний інтервал перевірки ґрунту (діб) — лише для прототипу */
   checkEveryDays: number
 }
@@ -27,6 +29,8 @@ export interface UserPlant {
   soilType?: 'sandy' | 'loam' | 'clay'
   sunExposure?: 'shade' | 'partial' | 'sun'
   potOrGround?: 'pot' | 'ground'
+  /** Наукова назва з розпізнавання, підтверджена користувачем */
+  scientificName?: string
 }
 
 export interface CareEvent {

@@ -44,15 +44,29 @@ export function Confirm({ title, children, confirmLabel, danger, onYes, onNo }: 
   title: string; children?: ReactNode; confirmLabel: string; danger?: boolean; onYes(): void; onNo(): void
 }) {
   const ref = useRef<HTMLButtonElement>(null)
+  const box = useRef<HTMLDivElement>(null)
+  const no = useRef(onNo)
+  no.current = onNo
+  // Ефект один раз на відкриття: інакше нова функція onNo при кожному рендері скидала б фокус
   useEffect(() => {
+    const prev = document.activeElement as HTMLElement | null
     ref.current?.focus()
-    const k = (e: KeyboardEvent) => e.key === 'Escape' && onNo()
+    const k = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') no.current()
+      if (e.key !== 'Tab' || !box.current) return
+      // Фокус не виходить за межі модального діалогу
+      const f = [...box.current.querySelectorAll<HTMLElement>('button, [href], input, select, textarea')]
+      if (!f.length) return
+      const i = f.indexOf(document.activeElement as HTMLElement)
+      const next = e.shiftKey ? (i <= 0 ? f.length - 1 : i - 1) : (i === f.length - 1 ? 0 : i + 1)
+      e.preventDefault(); f[next].focus()
+    }
     addEventListener('keydown', k)
-    return () => removeEventListener('keydown', k)
-  }, [onNo])
+    return () => { removeEventListener('keydown', k); prev?.focus?.() }
+  }, [])
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4" onClick={onNo}>
-      <div role="alertdialog" aria-modal="true" aria-labelledby="dlg-t" className="card w-full max-w-sm p-6" onClick={(e) => e.stopPropagation()}>
+      <div ref={box} role="alertdialog" aria-modal="true" aria-labelledby="dlg-t" className="card w-full max-w-sm p-6" onClick={(e) => e.stopPropagation()}>
         <h2 id="dlg-t" className="font-display text-xl font-bold">{title}</h2>
         <div className="mt-2 text-leaf-800/80">{children}</div>
         <div className="mt-5 flex gap-3">
@@ -74,6 +88,9 @@ export function Toast({ msg, action, onClose }: { msg: string; action?: { label:
     </div>
   )
 }
+
+/** Локальна календарна дата YYYY-MM-DD (не UTC). */
+export const localISODate = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 
 export const fmtDate = (d: Date | string) =>
   new Date(d).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long' })

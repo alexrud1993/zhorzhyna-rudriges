@@ -14,3 +14,5 @@ PROJECT_HANDOFF.md
 Zhorzhyna_Rudriges_MASTER_PROMPT.md
 Zhorzhyna_Rudriges_Logos.zip
 tests/server-smoke.mjs
+tests/_qa
+.claude/

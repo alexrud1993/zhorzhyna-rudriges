@@ -151,7 +151,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 }
 
 /* ---------- Зображення ---------- */
-export async function shrinkImage(file: File, max = 800): Promise<Blob> {
+export async function shrinkImage(file: Blob, max = 800): Promise<Blob> {
   if (!file.type.startsWith('image/')) throw new Error('Оберіть файл зображення.')
   if (file.size > 15 * 1024 * 1024) throw new Error('Файл завеликий (макс. 15 МБ).')
   const bmp = await createImageBitmap(file).catch(() => { throw new Error('Не вдалося прочитати зображення.') })
@@ -189,7 +189,7 @@ export function parseBackup(text: string): { plants: UserPlant[]; events: CareEv
       throw new Error('Некоректний запис рослини у файлі.')
     ids.add(p.id)
     const { imageDataUrl, ...rest } = p
-    const out: UserPlant = { ...rest, cityId: cityById(p.cityId).id }
+    const out: UserPlant = { ...rest, cityId: cityById(p.cityId).id, scientificName: typeof p.scientificName === 'string' ? p.scientificName.slice(0, 120) : undefined }
     if (typeof imageDataUrl === 'string' && imageDataUrl.startsWith('data:image/')) {
       const [h, b64] = imageDataUrl.split(',')
       const bin = atob(b64); const arr = new Uint8Array(bin.length)
