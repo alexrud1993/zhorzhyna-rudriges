@@ -1,0 +1,43 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    name: Дані, юніт-тести, секрети, збірка
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Перевірка відсутності секретів (SEC-102)
+        run: npm run check:secrets
+      - name: JSON Schema пакетів data/v2 (DB-008)
+        run: npm run data:validate
+      - name: Юніт-тести валідатора й проксі
+        run: npm run test:data && npm run test:proxy
+      - name: Збірка (TypeScript + Vite)
+        run: npm run build
+  e2e:
+    name: Регресія 1.0/1.1 (AC-220)
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: npm run smoke
+      - run: npm run test:features
+      - run: npm run test:identify

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:zhorzhyna:schema:taxon:2",
+  "title": "Taxon — таксон бази рослин (2.0-мінімум)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "rank", "acceptedName", "nameUk", "genus", "family", "category", "synonyms", "ids", "wikiTitles", "legacyCatalogId", "retrievedAt"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "rank": { "enum": ["species", "subspecies", "variety", "hybrid", "genus", "group"] },
+    "acceptedName": { "type": ["string", "null"], "minLength": 1 },
+    "nameUk": { "type": ["string", "null"], "minLength": 1 },
+    "genus": { "type": ["string", "null"] },
+    "family": { "type": ["string", "null"] },
+    "category": { "enum": ["indoor", "garden", "vegetable", "tree"] },
+    "synonyms": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "ids": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gbif", "wikidata", "powo", "ipni", "wcvp", "plantnet"],
+      "properties": {
+        "gbif": { "type": ["integer", "null"] },
+        "wikidata": { "type": ["string", "null"], "pattern": "^Q[0-9]+$" },
+        "powo": { "type": ["string", "null"] },
+        "ipni": { "type": ["string", "null"] },
+        "wcvp": { "type": ["string", "null"] },
+        "plantnet": { "type": ["string", "null"] }
+      }
+    },
+    "wikiTitles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uk", "en"],
+      "properties": { "uk": { "type": ["string", "null"] }, "en": { "type": ["string", "null"] } }
+    },
+    "legacyCatalogId": { "type": ["string", "null"] },
+    "retrievedAt": { "type": "string", "format": "date-time" }
+  },
+  "allOf": [
+    { "if": { "properties": { "rank": { "const": "group" } } }, "then": { "properties": { "acceptedName": { "type": "null" } } }, "else": { "properties": { "acceptedName": { "type": "string" } } } }
+  ]
+}

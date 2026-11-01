@@ -1,0 +1,310 @@
+[
+  {
+    "taxonId": "5d20761e-db52-43cb-b016-516213676ee4",
+    "lang": "uk",
+    "name": "Монстера",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "fe2936f9-0038-4005-91e6-024d7c967158",
+    "lang": "uk",
+    "name": "Фікус Бенджаміна",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "d7bff865-a337-480e-8382-4cc6c0333ce3",
+    "lang": "uk",
+    "name": "Сансев’єрія",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "b5f75ed4-7715-411f-9e49-83cdc91df160",
+    "lang": "uk",
+    "name": "Замійокулькас",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "1a594c6c-99c2-4ad9-b092-d4aa3cb51a87",
+    "lang": "uk",
+    "name": "Орхідея фаленопсис",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "4ad89a82-78db-47f1-81db-690528d299cd",
+    "lang": "uk",
+    "name": "Спатифілум",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "b920fa9d-b6bb-4932-9371-68e36c69f483",
+    "lang": "uk",
+    "name": "Троянда садова",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "0a308c0f-e7b3-48d7-81da-b28cdda4ae5f",
+    "lang": "uk",
+    "name": "Гортензія",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "559911f1-0e66-4ce9-9910-e9b56d3ae762",
+    "lang": "uk",
+    "name": "Лаванда",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "d7965a19-f9ae-467a-bc6e-da6c2c94fd75",
+    "lang": "uk",
+    "name": "Томат",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "2bf4bfe2-8f80-437f-b166-18092cddef69",
+    "lang": "uk",
+    "name": "Огірок",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "b6573b2b-a766-4ea6-90ff-b7cd1aaefc65",
+    "lang": "uk",
+    "name": "Перець солодкий",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "888215da-57f6-4e3d-ad32-1919d131f540",
+    "lang": "uk",
+    "name": "Полуниця",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "560f5e9c-354c-49ac-9709-5bba63c907a2",
+    "lang": "uk",
+    "name": "Яблуня",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "2018d08a-c8f3-4a05-a24f-078682a0712e",
+    "lang": "uk",
+    "name": "Туя",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "c7f1af76-05f2-4580-9566-5eefb8fab3f7",
+    "lang": "uk",
+    "name": "Смородина чорна",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "178f127c-c59a-48dc-831b-7686007c0946",
+    "lang": "uk",
+    "name": "Інша кімнатна рослина",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "181833ca-4390-49d8-9f55-778babe7a54f",
+    "lang": "uk",
+    "name": "Інша садова рослина",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "013fdb63-d391-49ae-b6e8-e1b1fc9f0ecf",
+    "lang": "uk",
+    "name": "Інша городня культура",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "57e93e8d-f4ed-4fd0-94c6-cff5e1759eac",
+    "lang": "uk",
+    "name": "Інше дерево чи кущ",
+    "preferred": true,
+    "source": "legacy-catalog"
+  },
+  {
+    "taxonId": "5d20761e-db52-43cb-b016-516213676ee4",
+    "lang": "uk",
+    "name": "Монстера делікатесна",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "1a594c6c-99c2-4ad9-b092-d4aa3cb51a87",
+    "lang": "uk",
+    "name": "Фаленопсис",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "b920fa9d-b6bb-4932-9371-68e36c69f483",
+    "lang": "uk",
+    "name": "Шипшина",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "559911f1-0e66-4ce9-9910-e9b56d3ae762",
+    "lang": "uk",
+    "name": "Лаванда вузьколиста",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "d7965a19-f9ae-467a-bc6e-da6c2c94fd75",
+    "lang": "uk",
+    "name": "Помідор",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "d7965a19-f9ae-467a-bc6e-da6c2c94fd75",
+    "lang": "uk",
+    "name": "Помідори",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "d7965a19-f9ae-467a-bc6e-da6c2c94fd75",
+    "lang": "uk",
+    "name": "Томати",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "d7965a19-f9ae-467a-bc6e-da6c2c94fd75",
+    "lang": "en",
+    "name": "tomato",
+    "preferred": true,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "2bf4bfe2-8f80-437f-b166-18092cddef69",
+    "lang": "uk",
+    "name": "Огірок звичайний",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "2bf4bfe2-8f80-437f-b166-18092cddef69",
+    "lang": "uk",
+    "name": "Огірки",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "b6573b2b-a766-4ea6-90ff-b7cd1aaefc65",
+    "lang": "uk",
+    "name": "Стручковий перець звичайний",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "b6573b2b-a766-4ea6-90ff-b7cd1aaefc65",
+    "lang": "uk",
+    "name": "Болгарський перець",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "b6573b2b-a766-4ea6-90ff-b7cd1aaefc65",
+    "lang": "uk",
+    "name": "Паприка",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "b6573b2b-a766-4ea6-90ff-b7cd1aaefc65",
+    "lang": "uk",
+    "name": "Солодкий перець",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "b6573b2b-a766-4ea6-90ff-b7cd1aaefc65",
+    "lang": "uk",
+    "name": "Червоний перець",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "888215da-57f6-4e3d-ad32-1919d131f540",
+    "lang": "uk",
+    "name": "Полуниці садові",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "888215da-57f6-4e3d-ad32-1919d131f540",
+    "lang": "uk",
+    "name": "Полуниці",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "888215da-57f6-4e3d-ad32-1919d131f540",
+    "lang": "uk",
+    "name": "Суниці ананасні",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "888215da-57f6-4e3d-ad32-1919d131f540",
+    "lang": "uk",
+    "name": "Суниці садові",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "888215da-57f6-4e3d-ad32-1919d131f540",
+    "lang": "en",
+    "name": "strawberry",
+    "preferred": true,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "560f5e9c-354c-49ac-9709-5bba63c907a2",
+    "lang": "uk",
+    "name": "Яблуня домашня",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "2018d08a-c8f3-4a05-a24f-078682a0712e",
+    "lang": "uk",
+    "name": "Туя західна",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "c7f1af76-05f2-4580-9566-5eefb8fab3f7",
+    "lang": "uk",
+    "name": "Чорна смородина",
+    "preferred": false,
+    "source": "wikidata"
+  },
+  {
+    "taxonId": "16a62737-d3f9-4bf5-9161-b98e4d984da5",
+    "lang": "uk",
+    "name": "Гіпеаструм",
+    "preferred": true,
+    "source": "wikidata"
+  }
+]

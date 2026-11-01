@@ -1,0 +1,97 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "reviewerModel": "gemini-3.5-flash-lite",
+  "promptVersion": "care-gen-1.0+care-review-1.0",
+  "rows": [
+    {
+      "taxonId": "888215da-57f6-4e3d-ad32-1919d131f540",
+      "name": "Fragaria × ananassa",
+      "nameUk": "Полуниця",
+      "status": "ai-draft",
+      "attempts": 1,
+      "sources": 3,
+      "filled": 5,
+      "nullFields": 11,
+      "reviewer": [
+        "[high] light: Значення \"full-sun\" не підтверджене джерелом s1 (у джерелі вказано \"достатньої освітленості\").",
+        "[high] water.baseIntervalDays: Значення 7 днів згадано лише для посушливої погоди (\"У суху погоду — полив найкраще здійснювати рано вранці раз на тиждень\"), а не як загальний базовий інтервал для всіх умов.",
+        "[high] activeMonths: Місяці активності (3-10) не підтверджені напряму в тексті джерела s1.",
+        "[low] text_uk: Твердження про \"раз на тиждень\" подано в джерелі виключно для умов посухої погоди, а в text_uk узагальнено на засушливі періоди без прив'язки до всіх умов, проте джерело говорить і про інші правила поливу (наприклад, навесні від появи бутонів тощо). Також освітлення в джерелі описано як \"достатня ос"
+      ]
+    },
+    {
+      "taxonId": "560f5e9c-354c-49ac-9709-5bba63c907a2",
+      "name": "Malus domestica",
+      "nameUk": "Яблуня",
+      "status": "ai-checked",
+      "attempts": 1,
+      "sources": 3,
+      "filled": 0,
+      "nullFields": 16,
+      "reviewer": []
+    },
+    {
+      "taxonId": "5d20761e-db52-43cb-b016-516213676ee4",
+      "name": "Monstera deliciosa",
+      "nameUk": "Монстера",
+      "status": "ai-checked",
+      "attempts": 2,
+      "sources": 3,
+      "filled": 8,
+      "nullFields": 8,
+      "reviewer": [
+        "[low] frostHardinessC: Значення -1 не підтверджене джерелом s2 у такому вигляді (джерело вказує hardiness 11, тобто найхолодніше до -1 °C або 30 °F, але температура нижче 10 °C зупиняє ріст, а мороз вбиває рослину)."
+      ]
+    },
+    {
+      "taxonId": "d7bff865-a337-480e-8382-4cc6c0333ce3",
+      "name": "Dracaena trifasciata",
+      "nameUk": "Сансев’єрія",
+      "status": "ai-checked",
+      "attempts": 1,
+      "sources": 2,
+      "filled": 5,
+      "nullFields": 11,
+      "reviewer": [
+        "[low] water.seasonFactors: Значення 0.33 для зими є розрахунковим, а джерело каже лише 'needs only one watering every few months', що не підтверджує саме числовий коефіцієнт."
+      ]
+    },
+    {
+      "taxonId": "79ad5928-7990-4f3c-a5a5-52b225a2c895",
+      "name": "Schlumbergera truncata",
+      "nameUk": null,
+      "status": "ai-checked",
+      "attempts": 1,
+      "sources": 3,
+      "filled": 4,
+      "nullFields": 12,
+      "reviewer": []
+    },
+    {
+      "taxonId": "16a62737-d3f9-4bf5-9161-b98e4d984da5",
+      "name": "Hippeastrum",
+      "nameUk": "Гіпеаструм",
+      "status": "ai-draft",
+      "attempts": 1,
+      "sources": 3,
+      "filled": 5,
+      "nullFields": 11,
+      "reviewer": [
+        "[high] dormancyMonths: У джерелі зазначено період спокою від шести до десяти тижнів (або два місяці), але не всі 12 місяців року.",
+        "[low] tempMin: У джерелі температурний діапазон для періоду спокою вказаний як 4-13 °C (39-55 °F). Значення 4 підтверджено, проте мінімальна температура не є загальним мінімумом рослини поза спокоєм у такий спосіб.",
+        "[high] text_uk: У текст українською включено твердження про період спокою протягом усього року або безперервно, що не відповідає джерелам (там вказано 6-10 тижнів або 2 місяці)."
+      ]
+    },
+    {
+      "taxonId": "ffc0ba61-d6a6-4368-bcf1-e4b1ca9c342b",
+      "name": "Pulsatilla pratensis ucrainica",
+      "nameUk": null,
+      "status": "ai-checked",
+      "attempts": 1,
+      "sources": 1,
+      "filled": 0,
+      "nullFields": 16,
+      "reviewer": []
+    }
+  ]
+}

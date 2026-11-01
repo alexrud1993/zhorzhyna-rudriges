@@ -22,7 +22,18 @@ npm run smoke            # CRUD, імпорт/експорт, 390/1280 px
 npm run test:features    # погода, журнал, сховище, оцінка вологості
 npm run test:identify    # розпізнавання (проксі підмінено), регресії QA
 npm run test:proxy       # модульні тести проксі
+npm run check:secrets    # перевірка відсутності ключів і токенів у файлах
 ```
+
+## Конвеєр даних 2.0 (`scripts/data/`)
+Специфікація релізу — [FULL_SPEC_v2_MIN.md](FULL_SPEC_v2_MIN.md), реєстр джерел і ліцензій — [data/SOURCES.md](data/SOURCES.md).
+```bash
+npm run data:taxa        # таксони (GBIF), uk-назви (Wikidata), catalogId→taxonId, міста → data/v2/
+npm run data:validate    # JSON Schema + цілісність + жорсткі перевірки карток (також у CI)
+npm run test:data        # юніт-тести валідатора
+npm run data:generate    # ШІ-картки догляду (Gemini) + рецензент → data/v2/care.json
+```
+Ключ Gemini для `data:generate` лише поза репозиторієм: змінна `GEMINI_API_KEY` або файл `~/.config/zhorzhyna/gemini.env`. На Windows його можна зберегти командою `powershell -ExecutionPolicy Bypass -File scripts\data\set-gemini-key.ps1` (ключ вводиться приховано). Тексти джерел кешуються в `data/cache/` (поза git).
 
 ## Що вміє
 Каталог із 16 рослин (кімнатні, сад, город, дерева й кущі), додавання/редагування/видалення, журнал поливу й перевірок із скасуванням, календар, погода Open-Meteo для 5 міст з кешем і fallback, Простий/Розумний режими, ручна оцінка вологості ґрунту, експорт/імпорт з валідацією.

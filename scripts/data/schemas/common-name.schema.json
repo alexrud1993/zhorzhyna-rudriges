@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:zhorzhyna:schema:common-name:2",
+  "title": "CommonName — народна назва таксона",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["taxonId", "lang", "name", "preferred", "source"],
+  "properties": {
+    "taxonId": { "type": "string", "format": "uuid" },
+    "lang": { "enum": ["uk", "en"] },
+    "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "preferred": { "type": "boolean" },
+    "source": { "enum": ["wikidata", "legacy-catalog"] }
+  }
+}

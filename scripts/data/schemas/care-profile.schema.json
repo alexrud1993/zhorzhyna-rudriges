@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:zhorzhyna:schema:care-profile:2",
+  "title": "CareProfile — картка догляду (2.0-мінімум)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["taxonId", "version", "scope", "light", "water", "soil", "phMin", "phMax", "tempMin", "tempMax", "frostHardinessC", "dormancyMonths", "activeMonths", "toxicity", "text_uk", "sources", "fieldSources", "reviewNotes", "status", "generatedBy", "textLicense", "updatedAt"],
+  "properties": {
+    "taxonId": { "type": "string", "format": "uuid" },
+    "version": { "type": "integer", "minimum": 1 },
+    "scope": { "enum": ["indoor", "outdoor", "both"] },
+    "light": { "enum": ["full-sun", "partial-shade", "shade", "bright-indirect", "low-light", null] },
+    "water": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model", "baseIntervalDays", "seasonFactors", "rootDepthM"],
+      "properties": {
+        "model": { "enum": ["pot-interval", "outdoor-interval"] },
+        "baseIntervalDays": { "type": ["integer", "null"] },
+        "seasonFactors": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["winter", "spring", "summer", "autumn"],
+          "properties": {
+            "winter": { "type": ["number", "null"] },
+            "spring": { "type": ["number", "null"] },
+            "summer": { "type": ["number", "null"] },
+            "autumn": { "type": ["number", "null"] }
+          }
+        },
+        "rootDepthM": { "type": ["number", "null"] }
+      }
+    },
+    "soil": { "type": ["string", "null"], "maxLength": 300 },
+    "phMin": { "type": ["number", "null"] },
+    "phMax": { "type": ["number", "null"] },
+    "tempMin": { "type": ["number", "null"] },
+    "tempMax": { "type": ["number", "null"] },
+    "frostHardinessC": { "type": ["number", "null"] },
+    "dormancyMonths": { "type": ["array", "null"], "items": { "type": "integer" }, "uniqueItems": true },
+    "activeMonths": { "type": ["array", "null"], "items": { "type": "integer" }, "uniqueItems": true },
+    "toxicity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cats", "dogs", "humans"],
+      "properties": {
+        "cats": { "enum": ["toxic", "non-toxic", null] },
+        "dogs": { "enum": ["toxic", "non-toxic", null] },
+        "humans": { "enum": ["toxic", "non-toxic", null] }
+      }
+    },
+    "text_uk": { "type": ["string", "null"], "maxLength": 2000 },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "url", "title", "license", "accessed"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^s[0-9]+$" },
+          "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+          "title": { "type": "string", "minLength": 1 },
+          "license": { "type": "string", "minLength": 1 },
+          "accessed": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "fieldSources": {
+      "description": "Прив'язка атрибутів до джерел: шлях поля → id з масиву sources. Кожне заповнене поле має мати ≥ 1 джерело (перевіряє validate-care.mjs).",
+      "type": "object",
+      "propertyNames": { "enum": ["light", "water.baseIntervalDays", "water.seasonFactors", "water.rootDepthM", "soil", "phMin", "phMax", "tempMin", "tempMax", "frostHardinessC", "dormancyMonths", "activeMonths", "toxicity.cats", "toxicity.dogs", "toxicity.humans", "text_uk"] },
+      "additionalProperties": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^s[0-9]+$" } }
+    },
+    "reviewNotes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field", "issue", "severity"],
+        "properties": {
+          "field": { "type": "string" },
+          "issue": { "type": "string", "minLength": 1 },
+          "severity": { "enum": ["high", "low", "info"] }
+        }
+      }
+    },
+    "status": { "enum": ["ai-draft", "ai-checked", "owner-reviewed", "ai-failed"] },
+    "generatedBy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model", "reviewerModel", "promptVersion", "generatedAt"],
+      "properties": {
+        "model": { "type": "string", "minLength": 1 },
+        "reviewerModel": { "type": ["string", "null"] },
+        "promptVersion": { "type": "string", "minLength": 1 },
+        "generatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "textLicense": { "type": ["string", "null"] },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

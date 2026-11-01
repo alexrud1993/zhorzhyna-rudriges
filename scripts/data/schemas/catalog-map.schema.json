@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:zhorzhyna:schema:catalog-map:2",
+  "title": "Відповідність catalogId v1 → taxonId v2 (DB-007)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "map"],
+  "properties": {
+    "schemaVersion": { "const": 2 },
+    "map": {
+      "type": "object",
+      "minProperties": 20,
+      "additionalProperties": { "type": "string", "format": "uuid" }
+    }
+  }
+}

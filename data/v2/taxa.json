@@ -1,0 +1,786 @@
+[
+  {
+    "id": "5d20761e-db52-43cb-b016-516213676ee4",
+    "rank": "species",
+    "acceptedName": "Monstera deliciosa",
+    "nameUk": "Монстера",
+    "genus": "Monstera",
+    "family": "Araceae",
+    "category": "indoor",
+    "synonyms": [
+      "Monstera borsigiana",
+      "Monstera deliciosa borsigiana",
+      "Monstera deliciosa sierrana",
+      "Monstera lennea",
+      "Monstera lenneana",
+      "Philodendron anatomicum",
+      "Philodendron fenestratum",
+      "Philodendron pertusum",
+      "Tornelia fragrans"
+    ],
+    "ids": {
+      "gbif": 2868241,
+      "wikidata": "Q161077",
+      "powo": "urn:lsid:ipni.org:names:87478-1",
+      "ipni": "87478-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Монстера приємна",
+      "en": "Monstera deliciosa"
+    },
+    "legacyCatalogId": "monstera",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "fe2936f9-0038-4005-91e6-024d7c967158",
+    "rank": "species",
+    "acceptedName": "Ficus benjamina",
+    "nameUk": "Фікус Бенджаміна",
+    "genus": "Ficus",
+    "family": "Moraceae",
+    "category": "indoor",
+    "synonyms": [
+      "Ficus benjamina warringiana",
+      "Ficus benjamina benjamina",
+      "Ficus benjamina bracteata",
+      "Ficus benjamina comosa",
+      "Ficus benjamina haematocarpa",
+      "Ficus benjamina lehuntei",
+      "Ficus benjamina nuda",
+      "Ficus benjaminoides",
+      "Ficus cuspidatocaudata",
+      "Ficus dictyophylla",
+      "Ficus exotica",
+      "Ficus haematocarpa",
+      "Ficus lucida",
+      "Ficus neglecta",
+      "Ficus nepalensis"
+    ],
+    "ids": {
+      "gbif": 5361932,
+      "wikidata": "Q275160",
+      "powo": "urn:lsid:ipni.org:names:852486-1",
+      "ipni": "852486-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Фікус бенджаміна",
+      "en": "Ficus benjamina"
+    },
+    "legacyCatalogId": "ficus",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "d7bff865-a337-480e-8382-4cc6c0333ce3",
+    "rank": "species",
+    "acceptedName": "Dracaena trifasciata",
+    "nameUk": "Сансев’єрія",
+    "genus": "Dracaena",
+    "family": "Asparagaceae",
+    "category": "indoor",
+    "synonyms": [
+      "Aletris hyacinthoides zeylanica",
+      "Sansevieria laurentii",
+      "Sansevieria trifasciata",
+      "Sansevieria trifasciata laurentii",
+      "Sansevieria trifasciata trifasciata",
+      "Sansevieria zeylanica laurentii"
+    ],
+    "ids": {
+      "gbif": 11041822,
+      "wikidata": "Q65936984",
+      "powo": "urn:lsid:ipni.org:names:77164235-1",
+      "ipni": "77164235-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": null,
+      "en": "Dracaena trifasciata"
+    },
+    "legacyCatalogId": "sansevieria",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "b5f75ed4-7715-411f-9e49-83cdc91df160",
+    "rank": "species",
+    "acceptedName": "Zamioculcas zamiifolia",
+    "nameUk": "Замійокулькас",
+    "genus": "Zamioculcas",
+    "family": "Araceae",
+    "category": "indoor",
+    "synonyms": [
+      "Caladium zamiifolium",
+      "Zamioculcas lanceolata",
+      "Zamioculcas loddigesii"
+    ],
+    "ids": {
+      "gbif": 2869014,
+      "wikidata": "Q15312475",
+      "powo": "urn:lsid:ipni.org:names:89402-1",
+      "ipni": "89402-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": null,
+      "en": "Zamioculcas zamiifolia"
+    },
+    "legacyCatalogId": "zamioculcas",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "1a594c6c-99c2-4ad9-b092-d4aa3cb51a87",
+    "rank": "genus",
+    "acceptedName": "Phalaenopsis",
+    "nameUk": "Орхідея фаленопсис",
+    "genus": "Phalaenopsis",
+    "family": "Orchidaceae",
+    "category": "indoor",
+    "synonyms": [
+      "Doritis",
+      "Grafia",
+      "Grussia",
+      "Hyerochilus",
+      "Hygrochilus",
+      "Kingidium",
+      "Kingiella",
+      "Lesliea",
+      "Nothodoritis",
+      "Ornithochilus",
+      "Polychilos",
+      "Polystylus",
+      "Sedirea",
+      "Staurites",
+      "Stauritis"
+    ],
+    "ids": {
+      "gbif": 2804680,
+      "wikidata": "Q133897",
+      "powo": "urn:lsid:ipni.org:names:30326-1",
+      "ipni": "30326-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Фаленопсис",
+      "en": "Phalaenopsis"
+    },
+    "legacyCatalogId": "orchid",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "4ad89a82-78db-47f1-81db-690528d299cd",
+    "rank": "genus",
+    "acceptedName": "Spathiphyllum",
+    "nameUk": "Спатифілум",
+    "genus": "Spathiphyllum",
+    "family": "Araceae",
+    "category": "indoor",
+    "synonyms": [
+      "Amomophyllum",
+      "Hydnostachyon",
+      "Leucochlamys",
+      "Massowia",
+      "Spathiphyllopsis"
+    ],
+    "ids": {
+      "gbif": 2869649,
+      "wikidata": "Q132632",
+      "powo": "urn:lsid:ipni.org:names:30003632-2",
+      "ipni": "2912-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Спатифілум",
+      "en": "Spathiphyllum"
+    },
+    "legacyCatalogId": "spathiphyllum",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "b920fa9d-b6bb-4932-9371-68e36c69f483",
+    "rank": "genus",
+    "acceptedName": "Rosa",
+    "nameUk": "Троянда садова",
+    "genus": "Rosa",
+    "family": "Rosaceae",
+    "category": "garden",
+    "synonyms": [
+      "Bakeria",
+      "Chabertia",
+      "Chavinia",
+      "Cottetia",
+      "Crepinia",
+      "Ernestella",
+      "Hesperhodos",
+      "Hulthemia",
+      "Juzepczukia",
+      "Laggeria",
+      "Lowea",
+      "Ozanonia",
+      "Platyrhodon",
+      "Pugetia",
+      "Rhodophora"
+    ],
+    "ids": {
+      "gbif": 8395064,
+      "wikidata": "Q34687",
+      "powo": "urn:lsid:ipni.org:names:30002432-2",
+      "ipni": "34015-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Шипшина",
+      "en": "Rose"
+    },
+    "legacyCatalogId": "rose",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "0a308c0f-e7b3-48d7-81da-b28cdda4ae5f",
+    "rank": "genus",
+    "acceptedName": "Hydrangea",
+    "nameUk": "Гортензія",
+    "genus": "Hydrangea",
+    "family": "Hydrangeaceae",
+    "category": "garden",
+    "synonyms": [
+      "Adamia",
+      "Broussaisia",
+      "Calyptranthe",
+      "Cardiandra",
+      "Cianitis",
+      "Cornidia",
+      "Decumaria",
+      "Deinanthe",
+      "Dichroa",
+      "Forsythia",
+      "Heteromalla",
+      "Hortensia",
+      "Hydrangia",
+      "Macnemaraea",
+      "Pileostegia"
+    ],
+    "ids": {
+      "gbif": 2985983,
+      "wikidata": "Q155997",
+      "powo": "urn:lsid:ipni.org:names:30010546-2",
+      "ipni": "30010546-2",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Гортензія",
+      "en": "Hydrangea"
+    },
+    "legacyCatalogId": "hydrangea",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "559911f1-0e66-4ce9-9910-e9b56d3ae762",
+    "rank": "species",
+    "acceptedName": "Lavandula angustifolia",
+    "nameUk": "Лаванда",
+    "genus": "Lavandula",
+    "family": "Lamiaceae",
+    "category": "garden",
+    "synonyms": [
+      "Lavandula angustfolia",
+      "Lavandula delphinensis",
+      "Lavandula fragrans",
+      "Lavandula vera ligustica"
+    ],
+    "ids": {
+      "gbif": 2927305,
+      "wikidata": "Q42081",
+      "powo": "urn:lsid:ipni.org:names:449008-1",
+      "ipni": "449008-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Лаванда вузьколиста",
+      "en": "Lavandula angustifolia"
+    },
+    "legacyCatalogId": "lavender",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "d7965a19-f9ae-467a-bc6e-da6c2c94fd75",
+    "rank": "species",
+    "acceptedName": "Solanum lycopersicum",
+    "nameUk": "Томат",
+    "genus": "Solanum",
+    "family": "Solanaceae",
+    "category": "vegetable",
+    "synonyms": [
+      "? humboltii",
+      "Amatula flava",
+      "Amatula rubra",
+      "Lycopersicon cerasiforme",
+      "Lycopersicon cerasiforme cognitum",
+      "Lycopersicon cerasiforme leptophyllum",
+      "Lycopersicon cerasiforme rotundilobum",
+      "Lycopersicon esculentum",
+      "Lycopersicon esculentum pyriforme",
+      "Lycopersicon esculentum amplipinnatum",
+      "Lycopersicon esculentum cordiforme",
+      "Lycopersicon esculentum densifolium",
+      "Lycopersicon esculentum finiens",
+      "Lycopersicon esculentum flammatum",
+      "Lycopersicon esculentum galenii"
+    ],
+    "ids": {
+      "gbif": 2930137,
+      "wikidata": "Q23501",
+      "powo": "urn:lsid:ipni.org:names:316947-2",
+      "ipni": "316947-2",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Помідор",
+      "en": "Tomato"
+    },
+    "legacyCatalogId": "tomato",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "2bf4bfe2-8f80-437f-b166-18092cddef69",
+    "rank": "species",
+    "acceptedName": "Cucumis sativus",
+    "nameUk": "Огірок",
+    "genus": "Cucumis",
+    "family": "Cucurbitaceae",
+    "category": "vegetable",
+    "synonyms": [
+      "Cucumis esculentus",
+      "Cucumis muricatus",
+      "Cucumis rumphii",
+      "Cucumis sativus albus",
+      "Cucumis sativus australis",
+      "Cucumis sativus borealis",
+      "Cucumis sativus brunnescens",
+      "Cucumis sativus pallescens",
+      "Cucumis sativus tuberculatus",
+      "Cucumis sativus typicus",
+      "Cucumis sativus viridis",
+      "Cucumis sativus agrestis",
+      "Cucumis sativus gracilior",
+      "Cucumis sativus rigidus",
+      "Cucumis sativus anatolicus"
+    ],
+    "ids": {
+      "gbif": 2874569,
+      "wikidata": "Q23425",
+      "powo": "urn:lsid:ipni.org:names:292296-1",
+      "ipni": "292296-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Огірок звичайний",
+      "en": "Cucumber"
+    },
+    "legacyCatalogId": "cucumber",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "b6573b2b-a766-4ea6-90ff-b7cd1aaefc65",
+    "rank": "species",
+    "acceptedName": "Capsicum annuum",
+    "nameUk": "Перець солодкий",
+    "genus": "Capsicum",
+    "family": "Solanaceae",
+    "category": "vegetable",
+    "synonyms": [
+      "Capsicum abyssinicum",
+      "Capsicum angulosum",
+      "Capsicum angulosum conicum",
+      "Capsicum angulosum macrocarpum",
+      "Capsicum angulosum ovale",
+      "Capsicum annuum bicolor",
+      "Capsicum annuum certoides",
+      "Capsicum annuum chlorocarpum",
+      "Capsicum annuum erectum",
+      "Capsicum annuum incrassatum",
+      "Capsicum annuum leucocarpum",
+      "Capsicum annuum luteum",
+      "Capsicum annuum nigrum",
+      "Capsicum annuum pendulum",
+      "Capsicum annuum violaceum"
+    ],
+    "ids": {
+      "gbif": 2932944,
+      "wikidata": "Q1380",
+      "powo": "urn:lsid:ipni.org:names:316944-2",
+      "ipni": "316944-2",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Стручковий перець звичайний",
+      "en": "Capsicum annuum"
+    },
+    "legacyCatalogId": "pepper",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "888215da-57f6-4e3d-ad32-1919d131f540",
+    "rank": "hybrid",
+    "acceptedName": "Fragaria × ananassa",
+    "nameUk": "Полуниця",
+    "genus": "Fragaria",
+    "family": "Rosaceae",
+    "category": "vegetable",
+    "synonyms": [
+      "Fragaria carolinensis",
+      "Fragaria chiloensis ananassa",
+      "Fragaria vesca ananassa",
+      "Fragaria xananassa",
+      "Fragaria ananassae"
+    ],
+    "ids": {
+      "gbif": 3029912,
+      "wikidata": "Q13158",
+      "powo": "urn:lsid:ipni.org:names:30117681-2",
+      "ipni": "30117681-2",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Полуниці садові",
+      "en": "Strawberry"
+    },
+    "legacyCatalogId": "strawberry",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "560f5e9c-354c-49ac-9709-5bba63c907a2",
+    "rank": "species",
+    "acceptedName": "Malus domestica",
+    "nameUk": "Яблуня",
+    "genus": "Malus",
+    "family": "Rosaceae",
+    "category": "tree",
+    "synonyms": [
+      "Malus anetica",
+      "Malus anetica rubra",
+      "Malus anisophylla",
+      "Malus apetala",
+      "Malus astracanica",
+      "Malus batavica",
+      "Malus calvilla",
+      "Malus calvilla alba",
+      "Malus calvilla rubra",
+      "Malus caspiriensis",
+      "Malus chitralensis",
+      "Malus columbella",
+      "Malus columbella alba",
+      "Malus communis",
+      "Malus communis apetala"
+    ],
+    "ids": {
+      "gbif": 3001244,
+      "wikidata": "Q18674606",
+      "powo": "urn:lsid:ipni.org:names:726282-1",
+      "ipni": "726282-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Яблуня домашня",
+      "en": "Malus domestica"
+    },
+    "legacyCatalogId": "apple",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "2018d08a-c8f3-4a05-a24f-078682a0712e",
+    "rank": "species",
+    "acceptedName": "Thuja occidentalis",
+    "nameUk": "Туя",
+    "genus": "Thuja",
+    "family": "Cupressaceae",
+    "category": "tree",
+    "synonyms": [
+      "Cupressus arborvitae",
+      "Cupressus nobleana",
+      "Juniperus ericoides",
+      "Retinispora devriesiana",
+      "Retinispora dubia",
+      "Retinispora ellwangeriana",
+      "Retinispora glaucescens",
+      "Retinispora keteleeri",
+      "Retinispora meldensis",
+      "Retinispora nobleana",
+      "Retinispora pygmaea",
+      "Retinispora troubetzkoyana",
+      "Thuja bodmeri",
+      "Thuja canadensis",
+      "Thuja caucasica"
+    ],
+    "ids": {
+      "gbif": 2684178,
+      "wikidata": "Q147468",
+      "powo": "urn:lsid:ipni.org:names:263956-1",
+      "ipni": "263956-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Туя західна",
+      "en": "Thuja occidentalis"
+    },
+    "legacyCatalogId": "thuja",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "c7f1af76-05f2-4580-9566-5eefb8fab3f7",
+    "rank": "species",
+    "acceptedName": "Ribes nigrum",
+    "nameUk": "Смородина чорна",
+    "genus": "Ribes",
+    "family": "Grossulariaceae",
+    "category": "tree",
+    "synonyms": [
+      "Botrycarpum nigrum",
+      "Botryocarpium nigrum",
+      "Grossularia nigra",
+      "Ribes aconitifolium",
+      "Ribes altaicum",
+      "Ribes apiifolium",
+      "Ribes bactonii",
+      "Ribes boreale",
+      "Ribes crispum",
+      "Ribes cyathiforme",
+      "Ribes intermedium",
+      "Ribes kolymense",
+      "Ribes nigrum subalpinum",
+      "Ribes nigrum vulgare",
+      "Ribes nigrum eglandulosum"
+    ],
+    "ids": {
+      "gbif": 2986192,
+      "wikidata": "Q146604",
+      "powo": "urn:lsid:ipni.org:names:792873-1",
+      "ipni": "792873-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Смородина чорна",
+      "en": "Blackcurrant"
+    },
+    "legacyCatalogId": "currant",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "178f127c-c59a-48dc-831b-7686007c0946",
+    "rank": "group",
+    "acceptedName": null,
+    "nameUk": "Інша кімнатна рослина",
+    "genus": null,
+    "family": null,
+    "category": "indoor",
+    "synonyms": [],
+    "ids": {
+      "gbif": null,
+      "wikidata": null,
+      "powo": null,
+      "ipni": null,
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": null,
+      "en": null
+    },
+    "legacyCatalogId": "other-indoor",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "181833ca-4390-49d8-9f55-778babe7a54f",
+    "rank": "group",
+    "acceptedName": null,
+    "nameUk": "Інша садова рослина",
+    "genus": null,
+    "family": null,
+    "category": "garden",
+    "synonyms": [],
+    "ids": {
+      "gbif": null,
+      "wikidata": null,
+      "powo": null,
+      "ipni": null,
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": null,
+      "en": null
+    },
+    "legacyCatalogId": "other-garden",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "013fdb63-d391-49ae-b6e8-e1b1fc9f0ecf",
+    "rank": "group",
+    "acceptedName": null,
+    "nameUk": "Інша городня культура",
+    "genus": null,
+    "family": null,
+    "category": "vegetable",
+    "synonyms": [],
+    "ids": {
+      "gbif": null,
+      "wikidata": null,
+      "powo": null,
+      "ipni": null,
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": null,
+      "en": null
+    },
+    "legacyCatalogId": "other-vegetable",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "57e93e8d-f4ed-4fd0-94c6-cff5e1759eac",
+    "rank": "group",
+    "acceptedName": null,
+    "nameUk": "Інше дерево чи кущ",
+    "genus": null,
+    "family": null,
+    "category": "tree",
+    "synonyms": [],
+    "ids": {
+      "gbif": null,
+      "wikidata": null,
+      "powo": null,
+      "ipni": null,
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": null,
+      "en": null
+    },
+    "legacyCatalogId": "other-tree",
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "79ad5928-7990-4f3c-a5a5-52b225a2c895",
+    "rank": "species",
+    "acceptedName": "Schlumbergera truncata",
+    "nameUk": null,
+    "genus": "Schlumbergera",
+    "family": "Cactaceae",
+    "category": "indoor",
+    "synonyms": [
+      "Cactus truncatus",
+      "Cereus truncatus",
+      "Cereus truncatus altensteinii",
+      "Epiphyllum altensteinii",
+      "Epiphyllum delicatum",
+      "Epiphyllum elegans",
+      "Epiphyllum guedneyrii",
+      "Epiphyllum purpurascens",
+      "Epiphyllum ruckeri",
+      "Epiphyllum ruckerianum",
+      "Epiphyllum salmoneum",
+      "Epiphyllum smithianum",
+      "Epiphyllum truncatum",
+      "Epiphyllum truncatum altensteinii",
+      "Epiphyllum truncatum cruentum"
+    ],
+    "ids": {
+      "gbif": 5383983,
+      "wikidata": "Q312047",
+      "powo": "urn:lsid:ipni.org:names:229597-2",
+      "ipni": "229597-2",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Schlumbergera truncata",
+      "en": "Schlumbergera truncata"
+    },
+    "legacyCatalogId": null,
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "16a62737-d3f9-4bf5-9161-b98e4d984da5",
+    "rank": "genus",
+    "acceptedName": "Hippeastrum",
+    "nameUk": "Гіпеаструм",
+    "genus": "Hippeastrum",
+    "family": "Amaryllidaceae",
+    "category": "indoor",
+    "synonyms": [
+      "Aschamia",
+      "Aulica",
+      "Callicore",
+      "Carlotea",
+      "Chonais",
+      "Eusarcops",
+      "Lais",
+      "Leopoldia",
+      "Lepidopharynx",
+      "Moldenkea",
+      "Omphalissa",
+      "Tocantinia",
+      "Trisacarpis"
+    ],
+    "ids": {
+      "gbif": 2854235,
+      "wikidata": "Q757257",
+      "powo": "urn:lsid:ipni.org:names:331211-2",
+      "ipni": "331211-2",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": "Гіпеаструм",
+      "en": "Hippeastrum"
+    },
+    "legacyCatalogId": null,
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  },
+  {
+    "id": "ffc0ba61-d6a6-4368-bcf1-e4b1ca9c342b",
+    "rank": "subspecies",
+    "acceptedName": "Pulsatilla pratensis ucrainica",
+    "nameUk": null,
+    "genus": "Pulsatilla",
+    "family": "Ranunculaceae",
+    "category": "garden",
+    "synonyms": [
+      "Anemone pulsatilla ucrainica",
+      "Pulsatilla ucrainica",
+      "Pulsatilla vulgaris ucrainica"
+    ],
+    "ids": {
+      "gbif": 7416928,
+      "wikidata": "Q17813760",
+      "powo": "urn:lsid:ipni.org:names:712072-1",
+      "ipni": "712072-1",
+      "wcvp": null,
+      "plantnet": null
+    },
+    "wikiTitles": {
+      "uk": null,
+      "en": null
+    },
+    "legacyCatalogId": null,
+    "retrievedAt": "2026-11-01T21:24:42.617Z"
+  }
+]

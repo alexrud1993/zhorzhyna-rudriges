@@ -10,7 +10,12 @@
     "smoke": "node tests/smoke.mjs",
     "test:features": "node tests/features.mjs",
     "test:identify": "node tests/identify.mjs",
-    "test:proxy": "node proxy/worker.test.mjs"
+    "test:proxy": "node proxy/worker.test.mjs",
+    "data:taxa": "node scripts/data/fetch-taxa.mjs",
+    "data:generate": "node scripts/data/generate.mjs",
+    "data:validate": "node scripts/data/validate.mjs",
+    "test:data": "node --test \"scripts/data/test/*.test.mjs\"",
+    "check:secrets": "node scripts/check-secrets.mjs"
   },
   "dependencies": {
     "idb": "^8.0.4",
@@ -23,6 +28,8 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "playwright": "^1.64.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",

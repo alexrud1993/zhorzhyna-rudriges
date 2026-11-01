@@ -1,0 +1,748 @@
+[
+  {
+    "taxonId": "d7965a19-f9ae-467a-bc6e-da6c2c94fd75",
+    "version": 1,
+    "scope": "outdoor",
+    "light": null,
+    "water": {
+      "model": "outdoor-interval",
+      "baseIntervalDays": null,
+      "seasonFactors": null,
+      "rootDepthM": null
+    },
+    "soil": "Допускається мульчування ґрунту навколо висаджених кущів торфом або хвойними голками з контролем кислотності.",
+    "phMin": null,
+    "phMax": null,
+    "tempMin": null,
+    "tempMax": null,
+    "frostHardinessC": null,
+    "dormancyMonths": null,
+    "activeMonths": null,
+    "toxicity": {
+      "cats": null,
+      "dogs": null,
+      "humans": null
+    },
+    "text_uk": "Сіянці пікірують після появи пари листків, утримуючись від поливу перші п'ять діб для вкорінення. Рослини вразливі до морозів, а їхню розсаду не слід вирощувати поруч із баклажанами. Для захисту від шкідників поверхню біля кущів мульчують хвоєю чи торфом, стежачи за кислотністю.",
+    "sources": [
+      {
+        "id": "s1",
+        "url": "https://uk.wikipedia.org/wiki/%D0%9F%D0%BE%D0%BC%D1%96%D0%B4%D0%BE%D1%80",
+        "title": "Помідор — Вікіпедія (uk)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s2",
+        "url": "https://en.wikipedia.org/wiki/Tomato",
+        "title": "Tomato — Вікіпедія (en)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s3",
+        "url": "https://www.gbif.org/species/2930137",
+        "title": "Solanum lycopersicum — GBIF Backbone Taxonomy",
+        "license": "CC BY 4.0",
+        "accessed": "2026-11-01"
+      }
+    ],
+    "fieldSources": {
+      "soil": [
+        "s1"
+      ],
+      "text_uk": [
+        "s1",
+        "s2"
+      ]
+    },
+    "reviewNotes": [],
+    "status": "ai-checked",
+    "generatedBy": {
+      "model": "gemini-3.8-flash",
+      "reviewerModel": "gemini-3.8-flash",
+      "promptVersion": "care-gen-1.0+care-review-1.0",
+      "generatedAt": "2026-11-01T21:40:04.126Z"
+    },
+    "textLicense": "CC BY-SA 4.0",
+    "updatedAt": "2026-11-01T21:40:04.126Z"
+  },
+  {
+    "taxonId": "2bf4bfe2-8f80-437f-b166-18092cddef69",
+    "version": 1,
+    "scope": "outdoor",
+    "light": null,
+    "water": {
+      "model": "outdoor-interval",
+      "baseIntervalDays": null,
+      "seasonFactors": null,
+      "rootDepthM": null
+    },
+    "soil": "Добре удобрена земля городу.",
+    "phMin": null,
+    "phMax": null,
+    "tempMin": null,
+    "tempMax": null,
+    "frostHardinessC": null,
+    "dormancyMonths": null,
+    "activeMonths": null,
+    "toxicity": {
+      "cats": null,
+      "dogs": null,
+      "humans": null
+    },
+    "text_uk": "Огірки вирощують у відкритому ґрунті або в теплицях, висаджуючи рослини на добре удобрені ділянки. Для гарного росту та підтримки плодів пагони рекомендується підв'язувати до вертикальних опор чи шпалер.",
+    "sources": [
+      {
+        "id": "s1",
+        "url": "https://uk.wikipedia.org/wiki/%D0%9E%D0%B3%D1%96%D1%80%D0%BE%D0%BA_%D0%B7%D0%B2%D0%B8%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%B9",
+        "title": "Огірок звичайний — Вікіпедія (uk)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s2",
+        "url": "https://en.wikipedia.org/wiki/Cucumber",
+        "title": "Cucumber — Вікіпедія (en)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s3",
+        "url": "https://www.gbif.org/species/2874569",
+        "title": "Cucumis sativus — GBIF Backbone Taxonomy",
+        "license": "CC BY 4.0",
+        "accessed": "2026-11-01"
+      }
+    ],
+    "fieldSources": {
+      "soil": [
+        "s1"
+      ],
+      "text_uk": [
+        "s1"
+      ]
+    },
+    "reviewNotes": [
+      {
+        "field": "text_uk",
+        "issue": "Твердження про те, що пагони рекомендується підв'язувати для гарного росту та підтримки плодів, відсутнє в джерелах; у джерелі s1 лише описується традиційна практика вирощування в Китаї та Японії, де огірки підв'язують до палиць.",
+        "severity": "high"
+      },
+      {
+        "field": "soil",
+        "issue": "Вимога щодо ґрунту взята з опису специфічної практики городництва в Китаї та Японії («висаджують на добре удобрену землю городу»), а не наведена як загальна характеристика необхідного типу ґрунту.",
+        "severity": "low"
+      }
+    ],
+    "status": "ai-draft",
+    "generatedBy": {
+      "model": "gemini-3.8-flash",
+      "reviewerModel": "gemini-3.8-flash",
+      "promptVersion": "care-gen-1.0+care-review-1.0",
+      "generatedAt": "2026-11-01T21:42:52.010Z"
+    },
+    "textLicense": "CC BY-SA 4.0",
+    "updatedAt": "2026-11-01T21:42:52.010Z"
+  },
+  {
+    "taxonId": "b6573b2b-a766-4ea6-90ff-b7cd1aaefc65",
+    "version": 1,
+    "scope": "outdoor",
+    "light": "full-sun",
+    "water": {
+      "model": "outdoor-interval",
+      "baseIntervalDays": null,
+      "seasonFactors": null,
+      "rootDepthM": null
+    },
+    "soil": "Легкі, багаті на гумус ґрунти з поживними речовинами в легкодоступній формі.",
+    "phMin": null,
+    "phMax": null,
+    "tempMin": 20,
+    "tempMax": 25,
+    "frostHardinessC": null,
+    "dormancyMonths": null,
+    "activeMonths": null,
+    "toxicity": {
+      "cats": null,
+      "dogs": null,
+      "humans": null
+    },
+    "text_uk": "Перець потребує максимального сонячного освітлення впродовж усього періоду вегетації. Для успішного розвитку рослині необхідні легкі та багаті на поживні речовини ґрунти. Поливати насадження слід нечасто, проте щедро, приділяючи особливу увагу зволоженню на етапі плодоношення.",
+    "sources": [
+      {
+        "id": "s1",
+        "url": "https://uk.wikipedia.org/wiki/%D0%A1%D1%82%D1%80%D1%83%D1%87%D0%BA%D0%BE%D0%B2%D0%B8%D0%B9_%D0%BF%D0%B5%D1%80%D0%B5%D1%86%D1%8C_%D0%B7%D0%B2%D0%B8%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%B9",
+        "title": "Стручковий перець звичайний — Вікіпедія (uk)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s2",
+        "url": "https://en.wikipedia.org/wiki/Capsicum_annuum",
+        "title": "Capsicum annuum — Вікіпедія (en)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s3",
+        "url": "https://www.gbif.org/species/2932944",
+        "title": "Capsicum annuum — GBIF Backbone Taxonomy",
+        "license": "CC BY 4.0",
+        "accessed": "2026-11-01"
+      }
+    ],
+    "fieldSources": {
+      "light": [
+        "s1"
+      ],
+      "soil": [
+        "s1"
+      ],
+      "tempMin": [
+        "s1"
+      ],
+      "tempMax": [
+        "s1"
+      ],
+      "text_uk": [
+        "s1"
+      ]
+    },
+    "reviewNotes": [],
+    "status": "ai-checked",
+    "generatedBy": {
+      "model": "gemini-3.8-flash",
+      "reviewerModel": "gemini-3.8-flash",
+      "promptVersion": "care-gen-1.0+care-review-1.0",
+      "generatedAt": "2026-11-01T21:45:09.868Z"
+    },
+    "textLicense": "CC BY-SA 4.0",
+    "updatedAt": "2026-11-01T21:45:09.868Z"
+  },
+  {
+    "taxonId": "888215da-57f6-4e3d-ad32-1919d131f540",
+    "version": 1,
+    "scope": "outdoor",
+    "light": "full-sun",
+    "water": {
+      "model": "outdoor-interval",
+      "baseIntervalDays": 7,
+      "seasonFactors": null,
+      "rootDepthM": null
+    },
+    "soil": "Глибоко розпушений і зволожений, але не мокрий ґрунт.",
+    "phMin": null,
+    "phMax": null,
+    "tempMin": null,
+    "tempMax": null,
+    "frostHardinessC": null,
+    "dormancyMonths": null,
+    "activeMonths": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "toxicity": {
+      "cats": null,
+      "dogs": null,
+      "humans": null
+    },
+    "text_uk": "Для успішного вирощування полуниці потрібні добре освітлена ділянка та помірно зволожений, глибоко розпушений ґрунт. У засушливі періоди рослину поливають рано вранці раз на тиждень, уникаючи потрапляння вологи на листя і плоди. Також важливо регулярно вносити добрива та видаляти зайві вуса.",
+    "sources": [
+      {
+        "id": "s1",
+        "url": "https://uk.wikipedia.org/wiki/%D0%9F%D0%BE%D0%BB%D1%83%D0%BD%D0%B8%D1%86%D1%96_%D1%81%D0%B0%D0%B4%D0%BE%D0%B2%D1%96",
+        "title": "Полуниці садові — Вікіпедія (uk)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s2",
+        "url": "https://en.wikipedia.org/wiki/Strawberry",
+        "title": "Strawberry — Вікіпедія (en)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s3",
+        "url": "https://www.gbif.org/species/3029912",
+        "title": "Fragaria × ananassa — GBIF Backbone Taxonomy",
+        "license": "CC BY 4.0",
+        "accessed": "2026-11-01"
+      }
+    ],
+    "fieldSources": {
+      "light": [
+        "s1"
+      ],
+      "water.baseIntervalDays": [
+        "s1"
+      ],
+      "soil": [
+        "s1"
+      ],
+      "activeMonths": [
+        "s1"
+      ],
+      "text_uk": [
+        "s1"
+      ]
+    },
+    "reviewNotes": [
+      {
+        "field": "light",
+        "issue": "Значення \"full-sun\" не підтверджене джерелом s1 (у джерелі вказано \"достатньої освітленості\").",
+        "severity": "high"
+      },
+      {
+        "field": "water.baseIntervalDays",
+        "issue": "Значення 7 днів згадано лише для посушливої погоди (\"У суху погоду — полив найкраще здійснювати рано вранці раз на тиждень\"), а не як загальний базовий інтервал для всіх умов.",
+        "severity": "high"
+      },
+      {
+        "field": "activeMonths",
+        "issue": "Місяці активності (3-10) не підтверджені напряму в тексті джерела s1.",
+        "severity": "high"
+      },
+      {
+        "field": "text_uk",
+        "issue": "Твердження про \"раз на тиждень\" подано в джерелі виключно для умов посухої погоди, а в text_uk узагальнено на засушливі періоди без прив'язки до всіх умов, проте джерело говорить і про інші правила поливу (наприклад, навесні від появи бутонів тощо). Також освітлення в джерелі описано як \"достатня ос",
+        "severity": "low"
+      }
+    ],
+    "status": "ai-draft",
+    "generatedBy": {
+      "model": "gemini-3.5-flash-lite",
+      "reviewerModel": "gemini-3.5-flash-lite",
+      "promptVersion": "care-gen-1.0+care-review-1.0",
+      "generatedAt": "2026-11-01T22:16:08.414Z"
+    },
+    "textLicense": "CC BY-SA 4.0",
+    "updatedAt": "2026-11-01T22:16:08.414Z"
+  },
+  {
+    "taxonId": "560f5e9c-354c-49ac-9709-5bba63c907a2",
+    "version": 1,
+    "scope": "outdoor",
+    "light": null,
+    "water": {
+      "model": "outdoor-interval",
+      "baseIntervalDays": null,
+      "seasonFactors": null,
+      "rootDepthM": null
+    },
+    "soil": null,
+    "phMin": null,
+    "phMax": null,
+    "tempMin": null,
+    "tempMax": null,
+    "frostHardinessC": null,
+    "dormancyMonths": null,
+    "activeMonths": null,
+    "toxicity": {
+      "cats": null,
+      "dogs": null,
+      "humans": null
+    },
+    "text_uk": null,
+    "sources": [
+      {
+        "id": "s1",
+        "url": "https://uk.wikipedia.org/wiki/%D0%AF%D0%B1%D0%BB%D1%83%D0%BD%D1%8F_%D0%B4%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D1%8F",
+        "title": "Яблуня домашня — Вікіпедія (uk)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s2",
+        "url": "https://en.wikipedia.org/wiki/Apple",
+        "title": "Apple — Вікіпедія (en)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s3",
+        "url": "https://www.gbif.org/species/3001244",
+        "title": "Malus domestica — GBIF Backbone Taxonomy",
+        "license": "CC BY 4.0",
+        "accessed": "2026-11-01"
+      }
+    ],
+    "fieldSources": {},
+    "reviewNotes": [],
+    "status": "ai-checked",
+    "generatedBy": {
+      "model": "gemini-3.5-flash-lite",
+      "reviewerModel": "gemini-3.5-flash-lite",
+      "promptVersion": "care-gen-1.0+care-review-1.0",
+      "generatedAt": "2026-11-01T22:16:23.073Z"
+    },
+    "textLicense": "CC BY-SA 4.0",
+    "updatedAt": "2026-11-01T22:16:23.073Z"
+  },
+  {
+    "taxonId": "5d20761e-db52-43cb-b016-516213676ee4",
+    "version": 1,
+    "scope": "indoor",
+    "light": "bright-indirect",
+    "water": {
+      "model": "pot-interval",
+      "baseIntervalDays": null,
+      "seasonFactors": null,
+      "rootDepthM": null
+    },
+    "soil": "Багатий і пухкий ґрунт, ідеально з садової землі та компосту в рівних частинах, або добре дренований торф'яний ґрунт з перлітом та шматочками кори.",
+    "phMin": null,
+    "phMax": null,
+    "tempMin": 20,
+    "tempMax": 30,
+    "frostHardinessC": -1,
+    "dormancyMonths": null,
+    "activeMonths": null,
+    "toxicity": {
+      "cats": "toxic",
+      "dogs": "toxic",
+      "humans": null
+    },
+    "text_uk": "Ця кімнатна ліана найкраще почувається за яскравого розсіяного світла та помірних температур у межах 20–30 °C. Рослину поливають у міру підсихання ґрунту, приблизно раз на тиждень або півтора. Слід пам'ятати, що монстера помірно токсична для домашніх тварин через вміст кристалів оксалату кальцію.",
+    "sources": [
+      {
+        "id": "s1",
+        "url": "https://uk.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BD%D1%81%D1%82%D0%B5%D1%80%D0%B0_%D0%BF%D1%80%D0%B8%D1%94%D0%BC%D0%BD%D0%B0",
+        "title": "Монстера приємна — Вікіпедія (uk)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s2",
+        "url": "https://en.wikipedia.org/wiki/Monstera_deliciosa",
+        "title": "Monstera deliciosa — Вікіпедія (en)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s3",
+        "url": "https://www.gbif.org/species/2868241",
+        "title": "Monstera deliciosa — GBIF Backbone Taxonomy",
+        "license": "CC BY 4.0",
+        "accessed": "2026-11-01"
+      }
+    ],
+    "fieldSources": {
+      "light": [
+        "s2"
+      ],
+      "soil": [
+        "s2"
+      ],
+      "tempMin": [
+        "s2"
+      ],
+      "tempMax": [
+        "s2"
+      ],
+      "frostHardinessC": [
+        "s2"
+      ],
+      "toxicity.cats": [
+        "s2"
+      ],
+      "toxicity.dogs": [
+        "s2"
+      ],
+      "text_uk": [
+        "s2"
+      ]
+    },
+    "reviewNotes": [
+      {
+        "field": "frostHardinessC",
+        "issue": "Значення -1 не підтверджене джерелом s2 у такому вигляді (джерело вказує hardiness 11, тобто найхолодніше до -1 °C або 30 °F, але температура нижче 10 °C зупиняє ріст, а мороз вбиває рослину).",
+        "severity": "low"
+      }
+    ],
+    "status": "ai-checked",
+    "generatedBy": {
+      "model": "gemini-3.5-flash-lite",
+      "reviewerModel": "gemini-3.5-flash-lite",
+      "promptVersion": "care-gen-1.0+care-review-1.0",
+      "generatedAt": "2026-11-01T22:16:34.856Z"
+    },
+    "textLicense": "CC BY-SA 4.0",
+    "updatedAt": "2026-11-01T22:16:34.856Z"
+  },
+  {
+    "taxonId": "d7bff865-a337-480e-8382-4cc6c0333ce3",
+    "version": 2,
+    "scope": "indoor",
+    "light": "low-light",
+    "water": {
+      "model": "pot-interval",
+      "baseIntervalDays": null,
+      "seasonFactors": null,
+      "rootDepthM": null
+    },
+    "soil": null,
+    "phMin": null,
+    "phMax": null,
+    "tempMin": null,
+    "tempMax": null,
+    "frostHardinessC": null,
+    "dormancyMonths": null,
+    "activeMonths": null,
+    "toxicity": {
+      "cats": "toxic",
+      "dogs": "toxic",
+      "humans": null
+    },
+    "text_uk": "Ця невибаглива кімнатна рослина чудово підходить для початківців, оскільки добре переносить слабке світло та нерегулярний полив. Вона може виживати з мінімальною кількістю вологи та сонця, проте взимку її слід поливати дуже рідко — лише раз на кілька місяців. Важливо уникати перезволоження, оскільки надлишок води може легко призвести до загнивання коріння.",
+    "sources": [
+      {
+        "id": "s1",
+        "url": "https://en.wikipedia.org/wiki/Dracaena_trifasciata",
+        "title": "Dracaena trifasciata — Вікіпедія (en)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s2",
+        "url": "https://www.gbif.org/species/11041822",
+        "title": "Dracaena trifasciata — GBIF Backbone Taxonomy",
+        "license": "CC BY 4.0",
+        "accessed": "2026-11-01"
+      }
+    ],
+    "fieldSources": {
+      "light": [
+        "s1"
+      ],
+      "toxicity.cats": [
+        "s1"
+      ],
+      "toxicity.dogs": [
+        "s1"
+      ],
+      "text_uk": [
+        "s1"
+      ]
+    },
+    "reviewNotes": [
+      {
+        "field": "toxicity.cats",
+        "issue": "У джерелі зазначено, що рослина помірно токсична (mildly toxic), а не просто toxic.",
+        "severity": "low"
+      },
+      {
+        "field": "toxicity.dogs",
+        "issue": "У джерелі зазначено, що рослина помірно токсична (mildly toxic), а не просто toxic.",
+        "severity": "low"
+      }
+    ],
+    "status": "ai-checked",
+    "generatedBy": {
+      "model": "gemini-3.5-flash-lite",
+      "reviewerModel": "gemini-3.5-flash-lite",
+      "promptVersion": "care-gen-1.1+care-review-1.0",
+      "generatedAt": "2026-11-01T22:19:31.049Z"
+    },
+    "textLicense": "CC BY-SA 4.0",
+    "updatedAt": "2026-11-01T22:19:31.049Z"
+  },
+  {
+    "taxonId": "79ad5928-7990-4f3c-a5a5-52b225a2c895",
+    "version": 1,
+    "scope": "indoor",
+    "light": "bright-indirect",
+    "water": {
+      "model": "pot-interval",
+      "baseIntervalDays": null,
+      "seasonFactors": null,
+      "rootDepthM": null
+    },
+    "soil": null,
+    "phMin": null,
+    "phMax": null,
+    "tempMin": 16,
+    "tempMax": 20,
+    "frostHardinessC": null,
+    "dormancyMonths": null,
+    "activeMonths": null,
+    "toxicity": {
+      "cats": null,
+      "dogs": null,
+      "humans": null
+    },
+    "text_uk": "Різдвяник радять тримати на світлому підвіконні, уникаючи палючих сонячних променів. У приміщенні слід підтримувати помірну температуру від 16 до 20 градусів. Поливати рослину варто помірно, а в нічний час важливо забезпечувати темряву для появи бутонів.",
+    "sources": [
+      {
+        "id": "s1",
+        "url": "https://uk.wikipedia.org/wiki/Schlumbergera_truncata",
+        "title": "Schlumbergera truncata — Вікіпедія (uk)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s2",
+        "url": "https://en.wikipedia.org/wiki/Schlumbergera_truncata",
+        "title": "Schlumbergera truncata — Вікіпедія (en)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s3",
+        "url": "https://www.gbif.org/species/5383983",
+        "title": "Schlumbergera truncata — GBIF Backbone Taxonomy",
+        "license": "CC BY 4.0",
+        "accessed": "2026-11-01"
+      }
+    ],
+    "fieldSources": {
+      "light": [
+        "s1"
+      ],
+      "tempMin": [
+        "s1"
+      ],
+      "tempMax": [
+        "s1"
+      ],
+      "text_uk": [
+        "s1"
+      ]
+    },
+    "reviewNotes": [],
+    "status": "ai-checked",
+    "generatedBy": {
+      "model": "gemini-3.5-flash-lite",
+      "reviewerModel": "gemini-3.5-flash-lite",
+      "promptVersion": "care-gen-1.0+care-review-1.0",
+      "generatedAt": "2026-11-01T22:17:07.547Z"
+    },
+    "textLicense": "CC BY-SA 4.0",
+    "updatedAt": "2026-11-01T22:17:07.547Z"
+  },
+  {
+    "taxonId": "16a62737-d3f9-4bf5-9161-b98e4d984da5",
+    "version": 2,
+    "scope": "indoor",
+    "light": null,
+    "water": {
+      "model": "pot-interval",
+      "baseIntervalDays": null,
+      "seasonFactors": null,
+      "rootDepthM": null
+    },
+    "soil": null,
+    "phMin": null,
+    "phMax": null,
+    "tempMin": null,
+    "tempMax": null,
+    "frostHardinessC": null,
+    "dormancyMonths": null,
+    "activeMonths": null,
+    "toxicity": {
+      "cats": null,
+      "dogs": null,
+      "humans": null
+    },
+    "text_uk": null,
+    "sources": [
+      {
+        "id": "s1",
+        "url": "https://uk.wikipedia.org/wiki/%D0%93%D1%96%D0%BF%D0%B5%D0%B0%D1%81%D1%82%D1%80%D1%83%D0%BC",
+        "title": "Гіпеаструм — Вікіпедія (uk)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s2",
+        "url": "https://en.wikipedia.org/wiki/Hippeastrum",
+        "title": "Hippeastrum — Вікіпедія (en)",
+        "license": "CC BY-SA 4.0",
+        "accessed": "2026-11-01"
+      },
+      {
+        "id": "s3",
+        "url": "https://www.gbif.org/species/2854235",
+        "title": "Hippeastrum — GBIF Backbone Taxonomy",
+        "license": "CC BY 4.0",
+        "accessed": "2026-11-01"
+      }
+    ],
+    "fieldSources": {},
+    "reviewNotes": [
+      {
+        "field": "*",
+        "issue": "tempMin (20) має бути строго менше за tempMax (20)",
+        "severity": "high"
+      },
+      {
+        "field": "*",
+        "issue": "soil має бути українською",
+        "severity": "high"
+      }
+    ],
+    "status": "ai-failed",
+    "generatedBy": {
+      "model": "gemini-3.5-flash-lite",
+      "reviewerModel": "gemini-3.5-flash-lite",
+      "promptVersion": "care-gen-1.1+care-review-1.0",
+      "generatedAt": "2026-11-01T22:19:10.681Z"
+    },
+    "textLicense": "CC BY-SA 4.0",
+    "updatedAt": "2026-11-01T22:19:10.681Z"
+  },
+  {
+    "taxonId": "ffc0ba61-d6a6-4368-bcf1-e4b1ca9c342b",
+    "version": 1,
+    "scope": "outdoor",
+    "light": null,
+    "water": {
+      "model": "outdoor-interval",
+      "baseIntervalDays": null,
+      "seasonFactors": null,
+      "rootDepthM": null
+    },
+    "soil": null,
+    "phMin": null,
+    "phMax": null,
+    "tempMin": null,
+    "tempMax": null,
+    "frostHardinessC": null,
+    "dormancyMonths": null,
+    "activeMonths": null,
+    "toxicity": {
+      "cats": null,
+      "dogs": null,
+      "humans": null
+    },
+    "text_uk": null,
+    "sources": [
+      {
+        "id": "s1",
+        "url": "https://www.gbif.org/species/7416928",
+        "title": "Pulsatilla pratensis ucrainica — GBIF Backbone Taxonomy",
+        "license": "CC BY 4.0",
+        "accessed": "2026-11-01"
+      }
+    ],
+    "fieldSources": {},
+    "reviewNotes": [],
+    "status": "ai-checked",
+    "generatedBy": {
+      "model": "gemini-3.5-flash-lite",
+      "reviewerModel": "gemini-3.5-flash-lite",
+      "promptVersion": "care-gen-1.0+care-review-1.0",
+      "generatedAt": "2026-11-01T22:17:33.947Z"
+    },
+    "textLicense": "CC BY-SA 4.0",
+    "updatedAt": "2026-11-01T22:17:33.947Z"
+  }
+]

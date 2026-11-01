@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:zhorzhyna:schema:place:2",
+  "title": "Населений пункт (міста v1 → Settings.place)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["cityId", "name", "lat", "lon", "geonamesId", "wikidata", "zone", "zoneNote"],
+  "properties": {
+    "cityId": { "type": "string" },
+    "name": { "type": "string", "minLength": 1 },
+    "lat": { "type": "number", "minimum": 44, "maximum": 53 },
+    "lon": { "type": "number", "minimum": 22, "maximum": 41 },
+    "geonamesId": { "type": ["integer", "null"] },
+    "wikidata": { "type": "string", "pattern": "^Q[0-9]+$" },
+    "zone": { "enum": ["polissia", "forest-steppe", "steppe", "carpathians", "crimea"] },
+    "zoneNote": { "type": "string" }
+  }
+}

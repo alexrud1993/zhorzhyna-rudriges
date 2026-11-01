@@ -1,0 +1,35 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "reviewerModel": "gemini-3.5-flash-lite",
+  "promptVersion": "care-gen-1.1+care-review-1.0",
+  "rows": [
+    {
+      "taxonId": "16a62737-d3f9-4bf5-9161-b98e4d984da5",
+      "name": "Hippeastrum",
+      "nameUk": "Гіпеаструм",
+      "status": "ai-failed",
+      "attempts": 3,
+      "sources": 3,
+      "filled": 0,
+      "nullFields": 16,
+      "reviewer": [
+        "[high] *: tempMin (20) має бути строго менше за tempMax (20)",
+        "[high] *: soil має бути українською"
+      ]
+    },
+    {
+      "taxonId": "d7bff865-a337-480e-8382-4cc6c0333ce3",
+      "name": "Dracaena trifasciata",
+      "nameUk": "Сансев’єрія",
+      "status": "ai-checked",
+      "attempts": 2,
+      "sources": 2,
+      "filled": 4,
+      "nullFields": 12,
+      "reviewer": [
+        "[low] toxicity.cats: У джерелі зазначено, що рослина помірно токсична (mildly toxic), а не просто toxic.",
+        "[low] toxicity.dogs: У джерелі зазначено, що рослина помірно токсична (mildly toxic), а не просто toxic."
+      ]
+    }
+  ]
+}

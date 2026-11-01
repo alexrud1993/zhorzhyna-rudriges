@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 2,
+  "map": {
+    "monstera": "5d20761e-db52-43cb-b016-516213676ee4",
+    "ficus": "fe2936f9-0038-4005-91e6-024d7c967158",
+    "sansevieria": "d7bff865-a337-480e-8382-4cc6c0333ce3",
+    "zamioculcas": "b5f75ed4-7715-411f-9e49-83cdc91df160",
+    "orchid": "1a594c6c-99c2-4ad9-b092-d4aa3cb51a87",
+    "spathiphyllum": "4ad89a82-78db-47f1-81db-690528d299cd",
+    "rose": "b920fa9d-b6bb-4932-9371-68e36c69f483",
+    "hydrangea": "0a308c0f-e7b3-48d7-81da-b28cdda4ae5f",
+    "lavender": "559911f1-0e66-4ce9-9910-e9b56d3ae762",
+    "tomato": "d7965a19-f9ae-467a-bc6e-da6c2c94fd75",
+    "cucumber": "2bf4bfe2-8f80-437f-b166-18092cddef69",
+    "pepper": "b6573b2b-a766-4ea6-90ff-b7cd1aaefc65",
+    "strawberry": "888215da-57f6-4e3d-ad32-1919d131f540",
+    "apple": "560f5e9c-354c-49ac-9709-5bba63c907a2",
+    "thuja": "2018d08a-c8f3-4a05-a24f-078682a0712e",
+    "currant": "c7f1af76-05f2-4580-9566-5eefb8fab3f7",
+    "other-indoor": "178f127c-c59a-48dc-831b-7686007c0946",
+    "other-garden": "181833ca-4390-49d8-9f55-778babe7a54f",
+    "other-vegetable": "013fdb63-d391-49ae-b6e8-e1b1fc9f0ecf",
+    "other-tree": "57e93e8d-f4ed-4fd0-94c6-cff5e1759eac"
+  }
+}

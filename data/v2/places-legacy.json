@@ -1,0 +1,52 @@
+[
+  {
+    "cityId": "kyiv",
+    "name": "Київ",
+    "lat": 50.45,
+    "lon": 30.52,
+    "wikidata": "Q1899",
+    "zone": "forest-steppe",
+    "zoneNote": "Попередньо: Лісостеп, межа з Поліссям",
+    "geonamesId": 703448
+  },
+  {
+    "cityId": "lviv",
+    "name": "Львів",
+    "lat": 49.84,
+    "lon": 24.03,
+    "wikidata": "Q36036",
+    "zone": "forest-steppe",
+    "zoneNote": "Попередньо: Західний Лісостеп",
+    "geonamesId": 702550
+  },
+  {
+    "cityId": "odesa",
+    "name": "Одеса",
+    "lat": 46.48,
+    "lon": 30.73,
+    "wikidata": "Q1874",
+    "zone": "steppe",
+    "zoneNote": "Попередньо: Степ",
+    "geonamesId": 698740
+  },
+  {
+    "cityId": "kharkiv",
+    "name": "Харків",
+    "lat": 49.99,
+    "lon": 36.23,
+    "wikidata": "Q42308",
+    "zone": "forest-steppe",
+    "zoneNote": "Попередньо: Лісостеп",
+    "geonamesId": 706483
+  },
+  {
+    "cityId": "dnipro",
+    "name": "Дніпро",
+    "lat": 48.46,
+    "lon": 35.05,
+    "wikidata": "Q48256",
+    "zone": "steppe",
+    "zoneNote": "Попередньо: Степ",
+    "geonamesId": 709930
+  }
+]
