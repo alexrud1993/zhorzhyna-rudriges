@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react'
-import { AlertTriangle, Camera, CheckCircle2, CloudRain, Download, Droplets, Droplet, ImageIcon, Loader2, Plus, Search, Sparkles, Thermometer, Trash2, Upload, Undo2, Pencil, Sprout, RefreshCw, WifiOff } from 'lucide-react'
+import { AlertTriangle, Camera, Smartphone, X, CheckCircle2, CloudRain, Download, Droplets, Droplet, ImageIcon, Loader2, Plus, Search, Sparkles, Thermometer, Trash2, Upload, Undo2, Pencil, Sprout, RefreshCw, WifiOff } from 'lucide-react'
 import { CATALOG, CATEGORY_LABEL, catalogById } from './catalog'
 import { CITIES, cityById } from './cities'
 import { adviseFor, dayDiff, startOfDay, type Advice } from './advice'
@@ -38,6 +38,36 @@ function StatusChip({ a }: { a: Advice }) {
   const cls = a.status === 'overdue' ? 'bg-clay/15 text-[#8f3f18]' : a.status === 'today' ? 'bg-leaf-700 text-white' : 'bg-leaf-100 text-leaf-800'
   const t = a.status === 'overdue' ? `Прострочено · ${relDay(d)}` : a.status === 'today' ? 'Перевірити сьогодні' : `Перевірка ${relDay(d)}`
   return <span className={`inline-block rounded-full px-3 py-1 text-sm font-semibold ${cls}`}>{t}</span>
+}
+
+/* ======================= Підказка для HTTP-версії (домашній сервер) ======================= */
+/** Публічна HTTPS-адреса, де застосунок можна встановити на телефон. */
+export const HTTPS_URL = 'https://alexrud1993.github.io/zhorzhyna-rudriges/'
+const HINT_KEY = 'install-hint-dismissed'
+
+/** Показується лише без захищеного з'єднання (HTTP у домашній мережі): там PWA не встановлюється. */
+function InstallHint({ dismissible }: { dismissible?: boolean }) {
+  const [hidden, setHidden] = useState(() => {
+    if (window.isSecureContext) return true
+    if (!dismissible) return false
+    try { return localStorage.getItem(HINT_KEY) === '1' } catch { return false }
+  })
+  if (hidden) return null
+  return (
+    <aside aria-labelledby="ih-t" className="card flex items-start gap-3 border-2 border-sky/30 p-4">
+      <Smartphone className="mt-0.5 shrink-0 text-sky" size={24} aria-hidden />
+      <div className="min-w-0 flex-1 text-sm">
+        <p id="ih-t" className="font-bold">Встановити на телефон</p>
+        <p className="mt-1 text-leaf-800/80">Ця адреса працює без HTTPS, тому браузер не дозволить встановити застосунок. Відкрийте на телефоні захищену версію:</p>
+        <a href={HTTPS_URL} className="mt-1 inline-block break-all font-semibold text-sky underline">{HTTPS_URL.replace('https://', '')}</a>
+        <p className="mt-1 text-leaf-800/70">Рослини з цієї адреси туди не переносяться самі — скористайтеся «Параметри → Експорт / Імпорт».</p>
+      </div>
+      {dismissible && (
+        <button aria-label="Сховати підказку" className="grid size-10 shrink-0 place-items-center rounded-xl hover:bg-leaf-50"
+          onClick={() => { try { localStorage.setItem(HINT_KEY, '1') } catch { /* ignore */ } setHidden(true) }}><X size={20} /></button>
+      )}
+    </aside>
+  )
 }
 
 /* ======================= Розпізнавання: блок на головній ======================= */
@@ -118,6 +148,7 @@ export function Home() {
   return (
     <div className="space-y-6">
       <PageTitle sub="Ваші рослини та найближчий догляд">Вітаю в саду 🌿</PageTitle>
+      <InstallHint dismissible />
       <IdentifyHero />
       <WeatherCard />
 
@@ -564,6 +595,7 @@ export function SettingsPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-5">
       <PageTitle>Налаштування</PageTitle>
+      <InstallHint />
       <section className="card space-y-3 p-5">
         <h2 className="font-display text-xl font-bold">Населений пункт</h2>
         <label className="label" htmlFor="city">Місто для погоди</label>

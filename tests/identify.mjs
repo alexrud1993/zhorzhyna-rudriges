@@ -119,6 +119,25 @@ try {
     ok(await page.getByRole('button', { name: /обрати вручну/ }).isVisible() && errs.length === 0, `помилка «${name}»: зрозуміле повідомлення + ручний вибір`)
     await ctx.close()
   }
+  // 6. Підказка про HTTPS-версію: лише без захищеного з'єднання
+  {
+    const { ctx, page } = await ctxPage()
+    await page.goto(URL)
+    await page.getByText('Розпізнати рослину за фото').first().waitFor()
+    const hint = page.getByRole('complementary', { name: 'Встановити на телефон' })
+    if (await page.evaluate(() => isSecureContext)) {
+      ok(await hint.count() === 0, 'HTTPS/localhost: підказку про встановлення не показано')
+    } else {
+      ok(await hint.isVisible(), 'HTTP: на головній є підказка про HTTPS-версію')
+      ok(await hint.getByRole('link').getAttribute('href') === 'https://alexrud1993.github.io/zhorzhyna-rudriges/', 'посилання веде на HTTPS-адресу')
+      await hint.getByRole('button', { name: 'Сховати підказку' }).click()
+      await page.reload(); await page.getByText('Розпізнати рослину за фото').first().waitFor()
+      ok(await hint.count() === 0, 'сховану підказку не показано після reload')
+      await page.goto(URL + '#/settings')
+      ok(await page.getByRole('complementary', { name: 'Встановити на телефон' }).isVisible(), 'у параметрах підказка лишається завжди')
+    }
+    await ctx.close()
+  }
   // 5. Регресії QA
   {
     const { ctx, page } = await ctxPage({ width: 320, height: 640 })
