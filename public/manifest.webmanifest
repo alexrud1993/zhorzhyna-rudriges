@@ -1,0 +1,10 @@
+{
+  "name": "Жоржина Рудрігес",
+  "short_name": "Жоржина Рудрігес",
+  "lang": "uk",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f3ea",
+  "theme_color": "#2f6b3f",
+  "icons": [{ "src": "zhorzhyna-rudriges-logo.png", "sizes": "1254x1254", "type": "image/png", "purpose": "any" }]
+}

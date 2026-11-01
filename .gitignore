@@ -1,0 +1,16 @@
+node_modules
+dist
+tests/shot-*.png
+tests/server-evidence
+tests/_*
+# Внутрішні документи й файли приватного сервера (LAN-адреса, SSH) — не публікуються
+DEPLOYMENT.md
+VERIFICATION.md
+START.cmd
+deploy/
+FULL_SPEC.md
+SPEC_REVIEW.md
+PROJECT_HANDOFF.md
+Zhorzhyna_Rudriges_MASTER_PROMPT.md
+Zhorzhyna_Rudriges_Logos.zip
+tests/server-smoke.mjs
